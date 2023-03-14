@@ -1,0 +1,21 @@
+::selection {
+    color: red;
+    background: black;
+  }
+  .logoBanner {
+    color: white;
+    font-style: italic;
+    font-size: 5vh;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+
+  .noti {
+    background-color: #3d1766;
+    height: 5vh;
+    width: 100%;
+  }
+  .noti .indianFlag {
+    height: 2.5vh;
+    width: 4vh;
+  }

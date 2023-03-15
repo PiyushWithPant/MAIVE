@@ -4,6 +4,8 @@ from index import Maive as M
 
 maive = M()
 
-maive.p()
+test = maive.AP_generateAP(a=3, d=3, n=2)
+
+print(test)
 
 

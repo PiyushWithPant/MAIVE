@@ -1,6 +1,16 @@
+from arithmaticProgression import ArithmaticProgression
 
-
-class Maive:
+class Maive(ArithmaticProgression):
     
     def __init__(self):
-        pass
+        """Main Constructor"""
+        super().__init__()
+        print("MAIVE successfully loaded...")
+        
+
+
+        
+    
+
+        
+    

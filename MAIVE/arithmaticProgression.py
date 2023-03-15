@@ -17,7 +17,7 @@ class ArithmaticProgression():
                 if "a" in kwargs and "d" in kwargs and "n" in kwargs:
                     
                     if((kwargs["a"] == type(int) or kwargs["a"] == type(float)) and (kwargs["d"] == type(int) or kwargs["d"] == type(float)) and (kwargs["n"] == type(int) or kwargs["n"] == type(float)) ):
-                        print("correct")
+                        print("done")
                     else:
                         raise TypeError("Please enter only integer/float values as input")
                         

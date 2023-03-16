@@ -4,7 +4,7 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.AP_generateAP(a= 5, d=5, n=10)
+test = maive.AP_checkIfAP()
 
 print(test)
 

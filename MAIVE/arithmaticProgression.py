@@ -15,9 +15,10 @@ class ArithmaticProgression():
 
                 # if(kwargs["a"] and kwargs["d"] and kwargs["n"]) in kwargs:
                 if "a" in kwargs and "d" in kwargs and "n" in kwargs:
+
+                    if((type(kwargs["a"]) is int or type(kwargs["a"]) is float) and (type(kwargs["d"]) is int or type(kwargs["d"]) is float) and (type(kwargs["n"]) is int or type(kwargs["n"]) is float) ):
                     
-                    if((kwargs["a"] == type(int) or kwargs["a"] == type(float)) and (kwargs["d"] == type(int) or kwargs["d"] == type(float)) and (kwargs["n"] == type(int) or kwargs["n"] == type(float)) ):
-                        print("done")
+                        return print("done")
                     else:
                         raise TypeError("Please enter only integer/float values as input")
                         

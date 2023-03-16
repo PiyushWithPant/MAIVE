@@ -4,7 +4,7 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.AP_generateAP(a=3, d=3, n=5)
+test = maive.AP_generateAP(a= 5, d=5, n=10)
 
 print(test)
 

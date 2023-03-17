@@ -164,11 +164,74 @@ class ArithmaticProgression():
             return e
         
     
-    def AP_findN(self):
-        pass
+    def AP_findN(self, **kwargs):
+        
+        try:
+            if(len(kwargs) == 3):
+                
+                if("a" in kwargs and "d" in kwargs and "an" in kwargs):
+                    
+                    if((type(kwargs["a"]) is int or type(kwargs["a"]) is float) and (type(kwargs["d"]) is int or type(kwargs["d"]) is float) and (type(kwargs["an"]) is int or type(kwargs["an"]) is float)):
+                        
+                        a = kwargs["a"]
+                        d = kwargs["d"]
+                        an = kwargs["an"]
+                        
+                        n = int((an - a) / d + 1)
+                        
+                        if( n < 1): # if n is smaller than 1, then there is no AP
+                            raise Exception("Invalid inputs! No A.P. found.")
+                        
+                        # now we will test achieved n
+                        n_test = 0
+                        
+                        an_test = self.AP_findNthElement(a=a, d=d, n=n)
+                        
+                        if(an_test == an):
+                            return n
+                        else:
+                            raise Exception("Invalid inputs! No A.P. found.")
+                
+                        
+                        
+                    else: 
+                        raise Exception("The values can only be an Integer or float")
+                    
+                else:
+                    raise Exception("Input only a, d and an, other keywords won't be accepted")
+                
+            else:
+                raise Exception("Please input only a (first term), d (difference) and an (the nth term)")
+        
+        except Exception as e:
+            return e
+        
     
     def AP_findDifference(self):
-        pass
+        try:
+            if(len(kwargs) == 3):
+                
+                if("a" in kwargs and "d" in kwargs and "an" in kwargs):
+                    
+                    if((type(kwargs["a"]) is int or type(kwargs["a"]) is float) and (type(kwargs["d"]) is int or type(kwargs["d"]) is float) and (type(kwargs["n"]) is int or type(kwargs["n"]) is float)):
+                        
+                        pass
+                        
+                    else: 
+                        raise Exception("The values can only be an Integer or float")
+                    
+                else:
+                    raise Exception("Input only a, d and an, other keywords won't be accepted")
+                
+            else:
+                raise Exception("Please input only a (first term), d (difference) and an (the nth term)")
+        
+        except Exception as e:
+            return e
     
     def AP_findSum(self):
-        pass
+        try:
+            pass
+        
+        except Exception as e:
+            return e

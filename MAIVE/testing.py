@@ -4,7 +4,7 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.AP_findNthElement(a=10, d=4, n=10)
+test = maive.AP_findN()
 
 
 print(test)

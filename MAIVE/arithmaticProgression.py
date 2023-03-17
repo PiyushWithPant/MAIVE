@@ -207,24 +207,43 @@ class ArithmaticProgression():
             return e
         
     
-    def AP_findDifference(self):
+    def AP_findDifference(self, **kwargs):
         try:
             if(len(kwargs) == 3):
                 
-                if("a" in kwargs and "d" in kwargs and "an" in kwargs):
+                if("a" in kwargs and "n" in kwargs and "an" in kwargs):
                     
-                    if((type(kwargs["a"]) is int or type(kwargs["a"]) is float) and (type(kwargs["d"]) is int or type(kwargs["d"]) is float) and (type(kwargs["n"]) is int or type(kwargs["n"]) is float)):
+                    if((type(kwargs["a"]) is int or type(kwargs["a"]) is float) and (type(kwargs["an"]) is int or type(kwargs["an"]) is float) and (type(kwargs["n"]) is int)):
                         
-                        pass
+                        if(kwargs["n"] < 3):
+                            raise Exception("The AP should have atleast 3 elements in order to find the correct difference")
+                        
+                        if(kwargs["a"] == kwargs["an"]):
+                            raise Exception("This is not an AP. Please enter correct values.")
+                        
+                        a = kwargs["a"]
+                        an = kwargs["an"]
+                        n = kwargs["n"]
+                        
+                        d = (an - a)/(n-1)
+                        
+                        # testing
+                        
+                        an_test = self.AP_findNthElement(a=a, d=d, n=n)
+                        
+                        if(an_test == an):
+                            return d
+                        else:
+                            raise Exception("No AP found! Please pass correct inputs.")
                         
                     else: 
                         raise Exception("The values can only be an Integer or float")
                     
                 else:
-                    raise Exception("Input only a, d and an, other keywords won't be accepted")
+                    raise Exception("Input only a, n and an, other keywords won't be accepted")
                 
             else:
-                raise Exception("Please input only a (first term), d (difference) and an (the nth term)")
+                raise Exception("Please input only a (first term), n (number of element) and an (the nth term)")
         
         except Exception as e:
             return e

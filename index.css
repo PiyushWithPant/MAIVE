@@ -2,6 +2,8 @@
     color: red;
     background: black;
   }
+
+
   .logoBanner {
     color: white;
     font-style: italic;
@@ -19,3 +21,24 @@
     height: 2.5vh;
     width: 4vh;
   }
+
+
+  .gettingStarted{
+
+    padding-top: 30px;
+  }
+
+  .gettingStarted h1{
+    color:#3d1766;
+
+  }
+  .gettingStarted p{
+    text-align: justify;
+
+  }
+  .gettingStarted p a{
+    text-decoration: none;
+   
+  }
+
+  

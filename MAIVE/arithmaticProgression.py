@@ -248,9 +248,39 @@ class ArithmaticProgression():
         except Exception as e:
             return e
     
-    def AP_findSum(self):
+    def AP_findSum(self, **kwargs):
         try:
-            pass
+            if(len(kwargs) == 3):
+                
+                if ("a" in kwargs and "d" in kwargs and "n" in kwargs):
+                    
+                    if((type(kwargs["a"]) is int or type(kwargs["a"]) is float) and (type(kwargs["d"]) is int or type(kwargs["d"]) is float) and (type(kwargs["n"]) is int )):
+                        
+                        a = kwargs["a"]
+                        d = kwargs["d"]
+                        n = kwargs["n"]
+                        
+                        if(n < 3):
+                            raise Exception("The value of n cannot be smaller than 3 in order to find the sum of AP")
+                        
+                        sum = (n/2) * (2*a + (n-1) * d)
+                        
+                        return sum
+                    
+                    
+                    else:
+                        raise Exception("Please enter only Integer or float value")
+                    
+             
+                    
+                else:
+                    raise Exception("Please input a, d and n only") 
+                
+            else:
+                raise Exception("Please input a (first term), d (difference) and n(number of terms)")
         
         except Exception as e:
             return e
+        
+
+# This is enough to give idea about the package, more functions will be added after successful deployment of the dummy version.

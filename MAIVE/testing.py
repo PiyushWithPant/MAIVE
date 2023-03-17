@@ -4,7 +4,7 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.AP_findDifference(a = 3, n=3, an = 9)
+test = maive.AP_findSum(a=3, d=3, n=3)
 
 
 print(test)

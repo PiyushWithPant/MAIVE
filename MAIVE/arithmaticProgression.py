@@ -68,11 +68,7 @@ class ArithmaticProgression():
             #     # self.AP.append(element)
                 
             return self.AP
-                
-                
-            
-
-        
+                 
     
     def AP_checkIfAP(self, list=[]):
         """Function to check if the LIST is an Arithmatic Progression or not. Returns TRUE or FALSE"""
@@ -131,8 +127,42 @@ class ArithmaticProgression():
             return e
     
     
-    def AP_findNthElement(self):
-        pass
+    def AP_findNthElement(self, **kwargs):
+        """Function to find the nth element from an AP. Please provide a, d and n."""
+        
+        try:
+            
+            if(len(kwargs) == 3):
+                
+                if("a" in kwargs and "d" in kwargs and "n" in kwargs):
+                
+                    if((type(kwargs["a"]) is int or type(kwargs["a"]) is float) and (type(kwargs["d"]) is int or type(kwargs["d"]) is float) and (type(kwargs["n"]) is int)):
+                        
+                        if (kwargs["n"]>0):
+                            
+                            a = kwargs["a"]
+                            d = kwargs["d"]
+                            n = kwargs["n"]
+                            
+                            element = a + (n-1)*d
+                        
+                            return element # the nth term
+                        
+                        else:
+                            raise Exception("The value of n cannot be smaller than 0.")
+                    
+                    else:
+                        raise Exception("Please enter only INT or FLOAT datatype value, except n which can only be a positive integer")
+                
+                else:
+                    raise Exception("Only input a, d and n")
+            
+            else:
+                raise Exception("Please input only a (first term), d (difference) and n (nth term to find)")
+            
+        except Exception as e:
+            return e
+        
     
     def AP_findN(self):
         pass

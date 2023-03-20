@@ -4,9 +4,10 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.QE_roots(a=1, b=5, c=14)
+test = maive.QE_roots(a=3, b=-2, c=1/3)
 
+print(test)
+# print(float(test["alpha"]))
 
-print(test[0], test[1])
 
 

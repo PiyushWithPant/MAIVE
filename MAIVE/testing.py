@@ -4,7 +4,7 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.AP_findSum(a=3, d=3, n=3)
+test = maive.QE_roots()
 
 
 print(test)

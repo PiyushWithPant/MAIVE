@@ -4,7 +4,7 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.QE_roots(a=3, b=-2, c=1/3)
+test = maive.QE_roots(a=1, b=10, c=300)
 
 print(test)
 # print(float(test["alpha"]))

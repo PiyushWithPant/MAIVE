@@ -61,7 +61,7 @@ class QuadraticEquation():
                         return self.roots
                     
                     elif(d < 0): # Unequal and imaginary roots
-                        pass
+                        return "This quadratic equation has unequal and imaginary roots since D < 0"
                     
                     else:
                         raise Exception("Invalid value!")

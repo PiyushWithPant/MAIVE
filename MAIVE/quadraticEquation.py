@@ -75,5 +75,12 @@ class QuadraticEquation():
             return e
         
         
-        return "hi"
+      
+    
+    def QE_typeOfRoots(self, **kwargs):
+        
+        try:
+            pass
+        except Exception as e:
+            return e
         

@@ -74,13 +74,49 @@ class QuadraticEquation():
         except Exception as e:
             return e
         
-        
+    
+    def isPerfectSquare(self,n):
+        """Function to verify if the given number is a perfect square or not, returns Boolean"""
+        num = int(math.sqrt(n))
+        res = (num * num) == n
+        return res
       
     
     def QE_typeOfRoots(self, **kwargs):
-        
+        """Function to return the type of roots the quadratic equation has."""
         try:
-            pass
+            if(len(kwargs) == 3):
+                
+                if( "a" in kwargs and "b" in kwargs and "c" in kwargs):
+                    
+                    a = kwargs["a"]
+                    b = kwargs["b"]
+                    c = kwargs["c"]
+                    
+                    d = b**2 - 4*a*c
+                    
+                    if(d == 0):
+                        return "Real and Equal roots"
+                    
+                    elif(d < 0):
+                        return "Unreal, Unequal and Imaginary (complex) roots"
+                    
+                    elif(d > 0):
+                        
+                        if(self.isPerfectSquare(d)):
+                            return "Real, unequal and Rational roots"
+                        elif(not self.isPerfectSquare(d)):
+                            return "Real, unequal and Irrational roots"
+                        else:
+                            raise Exception("Invalid input!")
+                    else:
+                        raise Exception("Invalid input!")
+                    
+                    
+                else:
+                    raise Exception("Please enter a, b and c as the real numbers of the quadratic equation")
+            else:
+                raise Exception("Please enter a, b and c as the real numbers of the quadratic equation")
         except Exception as e:
             return e
         

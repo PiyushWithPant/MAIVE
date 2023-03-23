@@ -47,11 +47,22 @@
   font-size:3vh;
   padding: 15px;
 
-  background-color: rgb(213, 213, 213);
+  background-color: rgb(225, 224, 224);
   color:rgb(52, 52, 52);
   font-family: 'Courier New', Courier, monospace;
   cursor: text;
 
+}
+
+.copyButton{
+  float:right;
+  padding: 1px 15px;
+  border: 1px solid gray;
+}
+.copyButton:hover{
+  background-color: rgb(236, 236, 236);
+  border: 1px solid rgb(77, 77, 77);
+  color:black;
 }
 
   

@@ -41,4 +41,17 @@
    
   }
 
+.code{
+
+
+  font-size:3vh;
+  padding: 15px;
+
+  background-color: rgb(213, 213, 213);
+  color:rgb(52, 52, 52);
+  font-family: 'Courier New', Courier, monospace;
+  cursor: text;
+
+}
+
   

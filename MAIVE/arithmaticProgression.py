@@ -165,7 +165,7 @@ class ArithmaticProgression():
         
     
     def AP_findN(self, **kwargs):
-        
+        """Function to find the the number of term if a, d and an is provided"""
         try:
             if(len(kwargs) == 3):
                 

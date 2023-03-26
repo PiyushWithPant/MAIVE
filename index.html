@@ -165,6 +165,11 @@
                       generate an AP which is from Arithmetic Progression domain
                       will be like -
                       <code>AP_generateAP()</code>
+
+                      <br />
+
+                      however, there is an exception for global functions like
+                      <code> isPerfectSquare() </code>
                     </li>
                     <li>
                       To ensure better performance, please input data with their
@@ -219,8 +224,41 @@
                         value i.e. TRUE or FALSE.
                       </p>
                     </li>
-                    <li class="list-group-item">by</li>
-                    <li class="list-group-item">by</li>
+                    <li class="list-group-item">
+                      <code>AP_findNthElement()</code>
+                      <p>
+                        Function to find the nth element of an Arithmatic
+                        Progression. Please provide <b>a</b> (First term),
+                        <b>d</b> (difference) and <b>n</b> (number of terms) as
+                        keyworded arguments.
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code>AP_findN()</code>
+                      <p>
+                        Function to determine the <b>n</b>. Please provide
+                        <b>a</b> (First term), <b>d</b> (difference) and
+                        <b>an</b> (the nth term) as keyworded arguments.
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code> AP_findDifference() </code>
+                      <p>
+                        Function to determine the difference d of an Arithmatic
+                        Progression. Please provide
+                        <b>a</b> (First term), <b>n</b> (number of terms) and
+                        <b>an</b> (the nth term) as keyworded arguments.
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code>AP_findSum()</code>
+                      <p>
+                        Function to determine the sum of an Arithmatic
+                        Progression. Please provide <b>a</b> (First term),
+                        <b>n</b> (number of terms) and <b>d</b> (difference) as
+                        keyworded arguments.
+                      </p>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -244,7 +282,37 @@
                 aria-labelledby="headingThree"
                 data-bs-parent="#accordionExample"
               >
-                <div class="accordion-body">QE</div>
+                <div class="accordion-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <code>QE_roots()</code>
+                      <p>
+                        Function to return the roots alpha and beta (A quadratic
+                        equation only has 2 roots) of the quadratic equation. It
+                        returns a Dictionary with keys alpha and beta as roots.
+                        Please provide <b>a</b> (coefficint of x<sup>2</sup> ),
+                        <b>b</b> (coefficient of x) and <b>c</b>(constant term)
+                        as keyworded arguments.
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code>isPerfectSquare()</code>
+                      <p>
+                        Function to verify if the given number is a perfect
+                        square or not, returns Boolean
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code>QE_typeOfRoots()</code>
+                      <p>
+                        Function to return the type of roots the quadratic
+                        equation has. Please provide <b>a</b> (coefficint of
+                        x<sup>2</sup> ), <b>b</b> (coefficient of x) and
+                        <b>c</b>(constant term) as keyworded arguments.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 

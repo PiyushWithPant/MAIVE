@@ -4,10 +4,16 @@ class Probability:
         self.event = 0
         
     def P_probability(self, **kwargs):
-        pass
+        try:
+            pass
+        except Exception as e:
+            return e
     
     def P_isIndependentEvent(self, **kwargs):
-        pass
+        try:
+            pass
+        except Exception as e:
+            return e
         
     
         

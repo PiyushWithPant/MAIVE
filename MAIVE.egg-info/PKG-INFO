@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: MAIVE
+Version: 0.0.1
+Summary: Mathematics for Ariticial Intelligence and Visualization Extended
+Author: Piyush Pant
+Author-email: piyushpant15@gmail.com
+Keywords: MAIVE,piyush,pant,AI,machine learning,maths,piyush pant,mathematics for ai,artificial intelligence
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+License-File: LICENSE

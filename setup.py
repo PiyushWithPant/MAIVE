@@ -44,5 +44,6 @@ setuptools.setup(
     # package_dir={'':'quicksample/src'},     # Directory of the source code of the package
     
     
-    install_requires=[]                     # Install other dependencies if any
+    
+    install_requires=[],                     # Install other dependencies if any
 )

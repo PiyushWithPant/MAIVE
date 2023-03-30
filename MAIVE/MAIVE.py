@@ -1,6 +1,6 @@
-from arithmaticProgression import ArithmaticProgression
-from quadraticEquation import QuadraticEquation
-from probability import Probability
+from src.arithmaticProgression import ArithmaticProgression
+from src.quadraticEquation import QuadraticEquation
+from src.probability import Probability
 
 
 class Maive(ArithmaticProgression, QuadraticEquation, Probability):

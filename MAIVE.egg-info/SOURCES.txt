@@ -1,6 +1,8 @@
 LICENSE
 README.md
 setup.py
+MAIVE/MAIVE.py
+MAIVE/__init__.py
 MAIVE.egg-info/PKG-INFO
 MAIVE.egg-info/SOURCES.txt
 MAIVE.egg-info/dependency_links.txt

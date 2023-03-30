@@ -6,7 +6,7 @@ from src.probability import Probability
 class Maive(ArithmaticProgression, QuadraticEquation, Probability):
     
     def __init__(self):
-        """Main Constructor"""
+        """MAIVE"""
         super().__init__()
         
         

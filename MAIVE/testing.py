@@ -4,7 +4,7 @@ from index import Maive as M
 
 maive = M()
 
-test = maive.QE_typeOfRoots(a=2, b=-8, c=3)
+test = maive.P_probability(s=100, e=10)
 
 print(test)
 # print(float(test["alpha"]))

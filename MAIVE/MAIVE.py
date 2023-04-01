@@ -9,7 +9,9 @@ class Maive(ArithmaticProgression, QuadraticEquation, Probability):
         """MAIVE"""
         super().__init__()
         
-        
+       
+# python setup.py sdist bdist_wheel
+# twine upload dist/*
 
 
         

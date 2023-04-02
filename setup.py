@@ -6,8 +6,8 @@ VERSION = "0.0.2"
 DESCRIPTION = "Mathematics for Ariticial Intelligence and Visualization Extended"
  
 
-# with open("README.md", "r") as fh:
-#     LONG_DESCRIPTION  = fh.read()
+with open("README.md", "r") as fh:
+    LONG_DESCRIPTION  = fh.read()
 
 setuptools.setup(
     
@@ -25,9 +25,9 @@ setuptools.setup(
      
     description=DESCRIPTION,
     
-    # long_description= LONG_DESCRIPTION ,      # Long description read from the the readme file
+    long_description= LONG_DESCRIPTION ,      # Long description read from the the readme file
     
-    # long_description_content_type="text/markdown",
+    long_description_content_type="text/markdown",
     
     packages=setuptools.find_packages(),    # List of all python modules to be installed
     

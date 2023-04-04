@@ -469,7 +469,25 @@ class Maive():
     
     def P_isIndependentEvent(self, **kwargs):
         try:
-            if(len(kwargs) is not 0):
+            if(len(kwargs) != 0):
+                
+                if("a" in kwargs and "b" in kwargs):           
+                    
+                    a = kwargs["a"]
+                    b = kwargs["b"]
+                    
+                    
+                    
+                    
+                
+                else:
+                    raise Exception("Please provide only a and b as events!")
+                
+                
+                
+                
+                
+                
                 pass
             else:
                 raise Exception("Please provide events a and b to check their independent nature!")

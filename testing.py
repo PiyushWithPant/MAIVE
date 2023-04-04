@@ -8,8 +8,7 @@ from maive.maive import Maive
 
 m = Maive()
 
-test = m.P_isIndependentEvent()
-
+test = m.P_isIndependentEvent(a=2)
 
 print(test)
 

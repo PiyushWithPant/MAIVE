@@ -16,8 +16,9 @@ class Maive():
         self.roots = {}
         
         # Probability
-        self.event = 0
-        self.probability = 0
+        self.event = None
+        self.probability = None
+        self.isIndependent = None
         
         
         
@@ -467,21 +468,59 @@ class Maive():
         except Exception as e:
             return e
     
+    
+    
     def P_isIndependentEvent(self, **kwargs):
+        """Function to check if two events are independent or not\n
+           Please input the following:\n
+           1. set of event A and event B in LIST datatype as "a" and "b", otherwise Probability of A intersection B as "pab"\n
+           2. probabily of event A as pa and event B as pb\n
+           This function returns TRUE if events are independent, otherwise FALSE
+        """
         try:
             if(len(kwargs) != 0):
                 
-                if("a" in kwargs and "b" in kwargs):           
+                if( ("a" in kwargs and "b" in kwargs) and ("pa" in kwargs) and ("pb" in kwargs)):           
                     
+                    # if pab is not provided
                     a = kwargs["a"]
                     b = kwargs["b"]
-                    
-                    
-                    
+                    pa = kwargs["pa"]
+                    pb = kwargs["pb"]
                     
                 
+                    a_intersection_b = set(a).intersection(set(b))
+                    
+                    P_a_intersection_b = len(a_intersection_b)/len(a)
+                    
+                    product  = pa * pb
+                    
+                    if( product == P_a_intersection_b):
+                        self.isIndependent = True
+                        return self.isIndependent
+                    
+                    else:
+                        self.isIndependent = False
+                        return self.isIndependent
+                    
+
+                                        
+                elif("pab" in kwargs and "pa" in kwargs and "pb" in kwargs):
+                    
+                    pa = kwargs["pa"]
+                    pb = kwargs["pb"]
+                    
+                    product = pa * pb
+                    
+                    if(kwargs["pab"] ==  product):
+                        self.isIndependent = True
+                        return self.isIndependent
+                    else:
+                        self.isIndependent = False
+                        return self.isIndependent
+                
                 else:
-                    raise Exception("Please provide only a and b as events!")
+                    raise Exception("Please provide a and b as set of events in LIST form OR just pab as probability of A intersection B, along with pa and pb as probability of a and b!")
                 
                 
                 

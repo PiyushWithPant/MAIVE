@@ -1,12 +1,14 @@
 # This file is created to test the MAIVE package
 
-from maive.maive import Maive
+# from maive.maive import Maive
 
 # import maive 
 
+from maive.maive import Maive
+
 m = Maive()
 
-test = m.P_probability(s=10, e=9)
+test = m.P_isIndependentEvent()
 
 
 print(test)

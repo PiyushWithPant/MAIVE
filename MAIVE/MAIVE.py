@@ -469,7 +469,10 @@ class Maive():
     
     def P_isIndependentEvent(self, **kwargs):
         try:
-            pass
+            if(len(kwargs) is not 0):
+                pass
+            else:
+                raise Exception("Please provide events a and b to check their independent nature!")
         except Exception as e:
             return e
         

@@ -509,10 +509,11 @@ class Maive():
                     
                     pa = kwargs["pa"]
                     pb = kwargs["pb"]
+                    pab = kwargs["pab"]
                     
                     product = pa * pb
                     
-                    if(kwargs["pab"] ==  product):
+                    if(pab ==  product):
                         self.isIndependent = True
                         return self.isIndependent
                     else:

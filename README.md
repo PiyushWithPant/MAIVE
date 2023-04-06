@@ -1,34 +1,28 @@
-        <img
-          src="./assets/pictures/MAIVE LOGO.png"
-          class="img-fluid w-25"
-          alt="MAIVE logo"
-        />
+<img src = "/assets/pictures/MAIVE%20LOGO.png">
+
+# MAIVE 
+##### Mathematics for Artificial Intelligence with Visualization Extended - 2023, Piyush Pant :heart:
+         
+<hr>
+
+Documentation <a
+            target="_blank"
+            rel="noopener"
+            href="https://piyushwithpant.github.io/MAIVE/"
+            title="MAIVE webpage"
+            >MAIVE</a>
+
+PyPi <a
+            target="_blank"
+            rel="noopener"
+            href="https://pypi.org/project/MAIVE/"
+            title="PYPI Maive"
+            >MAIVE</a>
 
 
-          <ul >
-            <li >
-              <p >
-                <b>M</b>athematics for <b>A</b>rtificial <b>I</b>ntelligence
-                with <b>V</b>isualization <b>E</b>xtended
-              </p>
-            </li>
-          </ul>
+## Get started with MAIVE
 
-
-
-
-
-
-        <h1>Get started with MAIVE</h1>
-        <p class="">
-          MAIVE (मैव) is a powerful python package equipped with advanced
-          mathematics to assist you in the domain of Artificial Intelligence
-          while also providing you with visualization support. The mathematics
-          level begins from high school to advanced, any topic that may be
-          required in the AI domain is provided in the MAIVE. Please understand
-          that the package is still under development, so there might be missing
-          topics (which will be added soon). To become a contributor or if you
-          want to suggest something, please contact us via
+MAIVE (मैव) is a powerful python package equipped with advanced mathematics to assist you in the domain of Artificial Intelligence while also providing you with visualization support. The mathematics level begins from high school to advanced, any topic that may be required in the AI domain is provided in the MAIVE. Please understand that the package is still under development, so there might be missing topics (which will be added soon). To become a contributor or if you want to suggest something, please contact us via
           <a
             target="_blank"
             rel="noopener"
@@ -48,27 +42,20 @@
       </div>
 
 
-          <h3># Installation</h3>
+### # Installation
 
 
-            `$ pip install maive`
+`$ pip install maive`
+
+<hr>
 
 
-          <p>
-            Copy the above code, paste it in your terminal and you are good to
-            go!
-          </p>
-        </div>
+### Documentation
+Please visit the section as per your requirements. It is advised to
+read the <b> HOW TO USE? </b> section before using the package.
 
 
-          <h3>Documentation</h3>
-          <p>
-            Please visit the section as per your requirements. It is advised to
-            read the <b> HOW TO USE? </b> section before using the package.
-          </p>
-
-
-                  <h6>HOW TO USE?</h6>
+#### HOW TO USE?
 
                   <ul>
                     <li>

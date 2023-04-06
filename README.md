@@ -2,7 +2,7 @@
 
 # MAIVE
 
-##### Mathematics for Artificial Intelligence with Visualization Extended - 2023, Piyush Pant :heart:
+###### Mathematics for Artificial Intelligence with Visualization Extended - 2023, Piyush Pant :heart:
 
 <hr>
 
@@ -66,7 +66,7 @@ however, there is an exception for global functions like
 
 <h6>Arithmatic Progression</h6>
 
-<ul class="list-group list-group-flush">
+<ul>
   <li >
     <code>AP_generateAP()</code>
  Function to generate an Arithmatic Progression. Please pass <b>a</b> (First term), <b>d</b> (difference) and <b>n</b> (number of terms) as keyworded arguments. If you do not pass anything, the function will return an Arithmatic progression of 10 terms with random a and d.
@@ -107,9 +107,10 @@ however, there is an exception for global functions like
     <b>n</b> (number of terms) and <b>d</b> (difference) as
     keyworded arguments.
 </li>
+
+<h6>Quadratic Equations</h6>
 <ul>
-<6>Quadratic Equations</h6>
-<l class="list-group list-group-flush">
+
 <li >
   <code>QE_roots()</code>
     Function to return the roots alpha and beta (A quadratic
@@ -133,6 +134,6 @@ however, there is an exception for global functions like
 </li>
 </ul>
 
-<h6>Statistics</h6>
-
 <h6>Probability</h6>
+
+<h6>Statistics</h6>

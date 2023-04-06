@@ -33,7 +33,14 @@ read the <b> HOW TO USE? </b> section before using the package.
 <ul>
   <li>
     <b> To import the package </b>
-`from maive.maive import Maive` <br />`M = Maive()`<br />`isAP = M.AP_checkIfAP([10,1,34])`<br />`print(isAP)`
+
+<code > from maive.maive import Maive </code>
+<br />
+<code > M = Maive() </code>
+<br />
+<code > isAP = M.AP_checkIfAP([10,1,34]) </code>
+<br />
+<code > print(isAP) </code>
 
 OR
 

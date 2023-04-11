@@ -137,5 +137,17 @@ however, there is an exception for global functions like
 </ul>
 
 <h6>Probability</h6>
+<ul>
+<li> 
+<code> P_probability() </code> 
+<p> To find the probability of an event. Please input the keyworded arguments as s = sample space, e = favourable event </p> 
+</li> 
+<li > 
+<code>P_isIndependentEvent()</code> 
+<p> Function to check if two events are independent or not. </p> 
+<p> Please input the following: <br /> 1. Set of event A and event B in LIST datatype as "a" and "b", otherwise Probability of A intersection B as "pab" <br /> 2. Probabily of event A as pa and event B as pb. This function returns TRUE if events are independent, otherwise FALSE </p> 
+</li>
+</ul>
 
 <h6>Statistics</h6>
+<ul></ul>

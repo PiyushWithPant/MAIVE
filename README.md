@@ -108,6 +108,8 @@ however, there is an exception for global functions like
     keyworded arguments.
 </li>
 
+</ul>
+
 <h6>Quadratic Equations</h6>
 <ul>
 

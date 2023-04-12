@@ -28,7 +28,7 @@ or through the
 Please visit the section as per your requirements. It is advised to
 read the <b> HOW TO USE? </b> section before using the package.
 
-#### HOW TO USE?
+<h6> HOW TO USE? </h6>
 
 <ul>
   <li>

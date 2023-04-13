@@ -523,12 +523,6 @@ class Maive():
                 else:
                     raise Exception("Please provide a and b as set of events in LIST form OR just pab as probability of A intersection B, along with pa and pb as probability of a and b!")
                 
-                
-                
-                
-                
-                
-                pass
             else:
                 raise Exception("Please provide events a and b to check their independent nature!")
         except Exception as e:

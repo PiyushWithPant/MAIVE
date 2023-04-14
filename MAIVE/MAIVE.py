@@ -539,9 +539,31 @@ class Maive():
         """
         
         pass
+    
+    
         
 
-        
+    def P_frequencyDistribution(self):
+        """
+        Function to generate a frequency distribution table
+        """
+        pass
+    
+    
+    
+    def P_absoluteFrequency(self):
+        """
+        Function to generate absolute frequency table out of the frequencies of all the events
+        """
+        pass
+    
+    def P_relativeFrequency(self):
+        """
+        Function to generate relative frequency table out of the absolute frequency
+        """
+        pass
+    
+    
     
         
        

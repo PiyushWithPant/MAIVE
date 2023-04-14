@@ -6,9 +6,9 @@
 
 <hr>
 
-Documentation <a target="_blank" rel="noopener" href="https://piyushwithpant.github.io/MAIVE/" title="MAIVE webpage" >MAIVE</a>
+Official Documentation : <a target="_blank" rel="noopener" href="https://piyushwithpant.github.io/MAIVE/" title="MAIVE webpage" >MAIVE</a>
 
-PyPi <a target="_blank" rel="noopener" href="https://pypi.org/project/MAIVE/" title="PYPI Maive" >MAIVE</a>
+PyPi Package webpage : <a target="_blank" rel="noopener" href="https://pypi.org/project/MAIVE/" title="PYPI Maive" >MAIVE</a>
 
 ## Get started with MAIVE
 
@@ -23,7 +23,7 @@ or through the
 
 <hr>
 
-### Documentation
+### Brief Documentation
 
 Please visit the section as per your requirements. It is advised to
 read the <b> HOW TO USE? </b> section before using the package.
@@ -64,88 +64,4 @@ however, there is an exception for global functions like
   </li>
 </ul>
 
-<h6>Arithmatic Progression</h6>
-
-<ul>
-  <li >
-    <code>AP_generateAP()</code>
- Function to generate an Arithmatic Progression. Please pass <b>a</b> (First term), <b>d</b> (difference) and <b>n</b> (number of terms) as keyworded arguments. If you do not pass anything, the function will return an Arithmatic progression of 10 terms with random a and d.
-
-  </li>
-
-<li >
-  <code> AP_checkIfAP() </code>
-    Function to check if a series is an Arithmatic
-    progression or not. Pass the series in form of
-    <b>LIST</b> as argument. The output will be a boolean
-    value i.e. TRUE or FALSE.
-</li>
-<li >
-  <code>AP_findNthElement()</code>
-    Function to find the nth element of an Arithmatic
-    Progression. Please provide <b>a</b> (First term),
-    <b>d</b> (difference) and <b>n</b> (number of terms) as
-    keyworded arguments.
-</li>
-<li >
-  <code>AP_findN()</code>
-    Function to determine the <b>n</b>. Please provide
-    <b>a</b> (First term), <b>d</b> (difference) and
-    <b>an</b> (the nth term) as keyworded arguments.
-</li>
-<li >
-  <code> AP_findDifference() </code>
-    Function to determine the difference d of an Arithmatic
-    Progression. Please provide
-    <b>a</b> (First term), <b>n</b> (number of terms) and
-    <b>an</b> (the nth term) as keyworded arguments.
-</li>
-<li >
-  <code>AP_findSum()</code>
-    Function to determine the sum of an Arithmatic
-    Progression. Please provide <b>a</b> (First term),
-    <b>n</b> (number of terms) and <b>d</b> (difference) as
-    keyworded arguments.
-</li>
-
-</ul>
-
-<h6>Quadratic Equations</h6>
-<ul>
-
-<li >
-  <code>QE_roots()</code>
-    Function to return the roots alpha and beta (A quadratic
-    equation only has 2 roots) of the quadratic equation. It
-    returns a Dictionary with keys alpha and beta as roots.
-    Please provide <b>a</b> (coefficint of x<sup>2</sup> ),
-    <b>b</b> (coefficient of x) and <b>c</b>(constant term)
-    as keyworded arguments.
-</li>
-<li >
-  <code>isPerfectSquare()</code>
-    Function to verify if the given number is a perfect
-    square or not, returns Boolean
-</li>
-<li >
-  <code>QE_typeOfRoots()</code>
-    Function to return the type of roots the quadratic
-    equation has. Please provide <b>a</b> (coefficint of
-    x<sup>2</sup> ), <b>b</b> (coefficient of x) and
-    <b>c</b>(constant term) as keyworded arguments.
-</li>
-</ul>
-
-<h6>Probability</h6>
-<ul>
-<li> 
-<code> P_probability() </code> To find the probability of an event. Please input the keyworded arguments as s = sample space, e = favourable event
-</li> 
-<li > 
-<code>P_isIndependentEvent()</code> Function to check if two events are independent or not.
-Please input the following: <br /> 1. Set of event A and event B in LIST datatype as "a" and "b", otherwise Probability of A intersection B as "pab" <br /> 2. Probabily of event A as pa and event B as pb. This function returns TRUE if events are independent, otherwise FALSE
-</li>
-</ul>
-
-<h6>Statistics</h6>
-<ul></ul>
+#### Please visit the actual Documentation of the MAIVE to get a deeper understanding.

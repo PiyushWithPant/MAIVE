@@ -474,7 +474,7 @@ class Maive():
         """Function to check if two events are independent or not\n
            Please input the following:\n
            1. set of event A and event B in LIST datatype as "a" and "b", otherwise Probability of A intersection B as "pab"\n
-           2. probabily of event A as pa and event B as pb\n
+           2. Probabily of event A as 'pa' and event B as 'pb'\n
            This function returns TRUE if events are independent, otherwise FALSE
         """
         try:
@@ -529,7 +529,16 @@ class Maive():
             return e
         
     
+    
+    def P_Frequency(self, listOfEvents, event):
         
+        """
+        Function to return the frequency (in numbers) of an event in a given list of events.\n
+        Input the data in order like this ( list_of_events , event_of_which_you_need_frequency)
+        
+        """
+        
+        pass
         
 
         

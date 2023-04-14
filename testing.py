@@ -8,7 +8,9 @@ from maive.maive import Maive
 
 m = Maive()
 
-test = m.P_isIndependentEvent(pab=1/4, pa = 0.5, pb = 0.5)
+test = m.P_frequency([9,9,7,9, "0"],"0")
+
+
 
 print(test)
 

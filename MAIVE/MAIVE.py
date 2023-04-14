@@ -19,6 +19,7 @@ class Maive():
         self.event = None
         self.probability = None
         self.isIndependent = None
+        self.frequency = None
         
         
         
@@ -530,7 +531,8 @@ class Maive():
         
     
     
-    def P_Frequency(self, listOfEvents, event):
+    
+    def P_frequency(self, listOfEvents, event):
         
         """
         Function to return the frequency (in numbers) of an event in a given list of events.\n
@@ -538,7 +540,38 @@ class Maive():
         
         """
         
-        pass
+        try:
+            
+            if(type(listOfEvents) == list):
+                
+                if(len(listOfEvents) == 0):
+                    raise Exception("The list is empty")
+                
+                
+                self.frequency = 0
+                
+                for object in listOfEvents:
+                    
+                    if( object == event):
+                        
+                        self.frequency += 1
+                        
+                
+                        
+                return self.frequency
+                    
+                    
+                    
+                    
+            
+            else:
+                raise Exception("Please input a list of events/objects, other formats are not accepted.")
+            
+            
+        except Exception as e:
+            return e
+        
+    
     
     
         
@@ -547,7 +580,12 @@ class Maive():
         """
         Function to generate a frequency distribution table
         """
-        pass
+        try:
+            pass
+            
+        except Exception as e:
+            return e
+        
     
     
     
@@ -555,13 +593,28 @@ class Maive():
         """
         Function to generate absolute frequency table out of the frequencies of all the events
         """
-        pass
+        try:
+            pass
+            
+        except Exception as e:
+            return e
+        
+    
+    
     
     def P_relativeFrequency(self):
         """
         Function to generate relative frequency table out of the absolute frequency
         """
-        pass
+        try:
+            pass
+            
+        except Exception as e:
+            return e
+        
+    
+    
+    
     
     
     

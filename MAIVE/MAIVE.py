@@ -576,12 +576,20 @@ class Maive():
     
         
 
-    def P_frequencyDistribution(self):
+    def P_frequencyDistribution(self, data):
         """
         Function to generate a frequency distribution table
         """
         try:
-            pass
+            if(type(data) == list):
+        
+                if(len(data) > 0):
+                    pass
+                
+                else:
+                    raise Exception("The list is empty, please provide elements in the list as well.")
+            else:
+                raise Exception("Please input a list of events/objects, other formats are not accepted")
             
         except Exception as e:
             return e

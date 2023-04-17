@@ -597,12 +597,21 @@ class Maive():
     
     
     
-    def P_absoluteFrequency(self):
+    def P_absoluteFrequency(self, data):
         """
         Function to generate absolute frequency table out of the frequencies of all the events
         """
         try:
-            pass
+            if(type(data) == list):
+        
+                if(len(data) > 0):
+                    pass
+                
+                else:
+                    raise Exception("The list is empty, please provide elements in the list as well.")
+            else:
+                raise Exception("Please input a list of events/objects, other formats are not accepted")
+            
             
         except Exception as e:
             return e

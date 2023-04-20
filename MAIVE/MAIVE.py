@@ -619,12 +619,21 @@ class Maive():
     
     
     
-    def P_relativeFrequency(self):
+    def P_relativeFrequency(self, data):
         """
         Function to generate relative frequency table out of the absolute frequency
         """
         try:
-            pass
+            if(type(data) == list):
+        
+                if(len(data) > 0):
+                    pass
+                
+                else:
+                    raise Exception("The list is empty, please provide elements in the list as well.")
+            else:
+                raise Exception("Please input a list of events/objects, other formats are not accepted")
+            
             
         except Exception as e:
             return e

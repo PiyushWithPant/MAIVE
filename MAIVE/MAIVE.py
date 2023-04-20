@@ -582,9 +582,22 @@ class Maive():
         """
         try:
             if(type(data) == list):
+                
+                table =  {}  # this table will hold values and their frequency
         
                 if(len(data) > 0):
-                    pass
+                    
+                    for i in data:
+                        
+                        table[i] = 0    # initializing the count of frequency
+                        
+                        for j in data:
+                            
+                            if i == j:
+                                
+                                table[i] += 1   # adding 1, even if it finds itself since we started it with 0
+                    
+                    return table
                 
                 else:
                     raise Exception("The list is empty, please provide elements in the list as well.")

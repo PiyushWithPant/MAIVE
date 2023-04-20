@@ -578,7 +578,7 @@ class Maive():
 
     def P_frequencyDistribution(self, data):
         """
-        Function to generate a frequency distribution table
+        Function to generate a frequency distribution table. Returns a dictionary with keys as list data items and values as their respective frequency
         """
         try:
             if(type(data) == list):

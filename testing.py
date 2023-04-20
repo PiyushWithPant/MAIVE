@@ -8,7 +8,7 @@ from maive.maive import Maive
 
 m = Maive()
 
-test = m.P_frequencyDistribution([5,7,3,5,6])
+test = m.P_frequencyDistribution(['4', 'a', 'a', 'piyush'])
 
 
 

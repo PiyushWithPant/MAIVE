@@ -622,10 +622,16 @@ class Maive():
                 if(len(data) > 0):
 
                     
-                    table = self.P_frequencyDistribution(data)
+                    frequencyTable = self.P_frequencyDistribution(data)
                     
-                    for key, value in table.items():
-                        value /= len(data)
+                    table = {}
+                    
+                    for key, value in frequencyTable.items():
+                        table[key] = value / len(data)
+                        
+                        
+                        
+                
                         
                     return table
                     

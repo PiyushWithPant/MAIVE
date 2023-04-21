@@ -614,13 +614,22 @@ class Maive():
     
     def P_relativeFrequency(self, data):
         """
-        Function to generate relative frequency table out of the absolute frequency
+        Function to generate relative frequency 
         """
         try:
             if(type(data) == list):
         
                 if(len(data) > 0):
-                    pass
+
+                    
+                    table = self.P_frequencyDistribution(data)
+                    
+                    for key, value in table.items():
+                        value /= len(data)
+                        
+                    return table
+                    
+                    
                 
                 else:
                     raise Exception("The list is empty, please provide elements in the list as well.")

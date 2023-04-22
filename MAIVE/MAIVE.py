@@ -630,9 +630,6 @@ class Maive():
                         table[key] = value / len(data)
                         
                         
-                        
-                
-                        
                     return table
                     
                     

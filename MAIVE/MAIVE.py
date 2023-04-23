@@ -644,7 +644,13 @@ class Maive():
             return e
         
     
-    
+    def P_conditionalProbability(self):
+        
+        try:
+            pass
+        
+        except Exception as e:
+            return e
     
     
     

@@ -8,7 +8,7 @@ from maive.maive import Maive
 
 m = Maive()
 
-test = m.P_relativeFrequency([ 'a' , 'a' , 'b' , 'b' ])
+test = m.P_compliment(0.1349394394)
 
 
 

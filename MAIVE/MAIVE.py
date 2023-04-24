@@ -642,7 +642,27 @@ class Maive():
             
         except Exception as e:
             return e
+    
+    
+    def P_compliment(self, a):
         
+        try:
+            
+            if(type(a) == int or type(a) == float):
+                
+                if(a > 1 or a < 0):
+                    raise Exception("Please provide correct value of the probability of event 'a'.")
+                
+                return 1-a
+
+            else:
+                raise Exception("Please provide INT or FLOAT datatype only")
+            
+            
+        except Exception as e:
+            return e
+    
+    
     
     def P_conditionalProbability(self):
         

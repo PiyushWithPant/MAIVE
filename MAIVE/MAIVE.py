@@ -645,7 +645,7 @@ class Maive():
     
     
     def P_compliment(self, a):
-        
+        """Function to return the compliment of an event. Please input the probability of the event as argument."""
         try:
             
             if(type(a) == int or type(a) == float):

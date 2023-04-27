@@ -672,6 +672,13 @@ class Maive():
         except Exception as e:
             return e
     
+    def P_BayesianProbability(self):
+        
+        try:
+            pass
+        
+        except Exception as e:
+            return e
     
     
     

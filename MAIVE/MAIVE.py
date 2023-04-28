@@ -664,10 +664,26 @@ class Maive():
     
     
     
-    def P_conditionalProbability(self):
+    def P_conditionalProbability(self, **kwargs):
+        """Function to return the conditional probability i.e. P(a|b). Please input keyworded arguments as\n
+        1. pab : Probability of A intersection B\n
+        2. b : Probability of event B
+        It will return the INT/FLOAT value which is result of P(a|b)
+        """
         
         try:
-            pass
+            if(len(kwargs) == 2):
+                
+                if("pab" in kwargs & "b" in kwargs):
+                    
+                    return kwargs["pab"]/kwargs["b"]
+                    
+                else:
+                    raise Exception("Please input pab (Probability of A intersection B) and p (Probability of event B)")
+                    
+            
+            else:
+                raise Exception("Please input pab (Probability of A intersection B) and p (Probability of event B)")
         
         except Exception as e:
             return e

@@ -675,11 +675,11 @@ class Maive():
         try:
             if(len(kwargs) == 3):
                 
-                if("pab" in kwargs & "pb" in kwargs & "s" in kwargs):
+                if("pab" in kwargs and "pb" in kwargs and "s" in kwargs):
                     
                     return kwargs["pab"]/kwargs["pb"]
                 
-                elif("a" in kwargs & "b" in kwargs & "s" in kwargs):
+                elif("a" in kwargs and "b" in kwargs and "s" in kwargs):
                     
                     if( type(kwargs["a"]) != list or type(kwargs["b"]) != list):
                         raise Exception("Please enter a and b as LIST")
@@ -691,11 +691,12 @@ class Maive():
                         raise Exception("Sample value is not appropriate.")
                         
                    
+                    ab = len(set(kwargs["a"]).intersection(set(kwargs["b"])))
                     
-                    Pab = ( kwargs["a"].intersection(kwargs["b"]) ) / kwargs["s"]
-                    Pb = kwargs["b"] / kwargs["s"]
+                    Pab = ab / kwargs["s"]
+                    Pb = len(kwargs["b"]) / kwargs["s"]
                     
-                    return Pab/Pb
+                    return round(Pab/Pb,2)
                     
                 else:
                     raise Exception("Please input as per CASE A or CASE B (Read function documentation).")

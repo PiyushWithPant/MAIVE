@@ -666,26 +666,34 @@ class Maive():
     
     def P_conditionalProbability(self, **kwargs):
         """Function to return the conditional probability i.e. P(a|b). Please input keyworded arguments as\n
-        CASE A:  'pab' Probability of A intersection B and 'pb' Probability of event B\n
+        CASE A:  'pab' Probability of A intersection B and 'pb' Probability of event B with 's' as sample space\n
         NOTE: If you don't have pab and pb, then enter \n
-        CASE B: 'a' List of set A and 'b' List of set B\n
+        CASE B: 'a' List of set A and 'b' List of set B with 's' as sample space\n
         It will return the INT/FLOAT value which is result of P(a|b)
         """
         
         try:
-            if(len(kwargs) == 2):
+            if(len(kwargs) == 3):
                 
-                if("pab" in kwargs & "pb" in kwargs):
+                if("pab" in kwargs & "pb" in kwargs & "s" in kwargs):
                     
                     return kwargs["pab"]/kwargs["pb"]
                 
-                elif("a" in kwargs & "b" in kwargs):
+                elif("a" in kwargs & "b" in kwargs & "s" in kwargs):
                     
-                    na = len(kwargs["a"])
-                    nb = len(kwargs["b"])
+                    if( type(kwargs["a"]) != list or type(kwargs["b"]) != list):
+                        raise Exception("Please enter a and b as LIST")
                     
-                    Pab = ( kwargs["a"].intersection(kwargs["b"]) ) / (na+nb)
-                    Pb = kwargs["b"] / (na+nb)
+                    if( len(kwargs["a"]) == 0 or len(kwargs["b"]) == 0):
+                        raise Exception("The list is empty")
+                    
+                    if( kwargs["s"] < ( len(kwargs["a"]) + len(kwargs["b"]) )):
+                        raise Exception("Sample value is not appropriate.")
+                        
+                   
+                    
+                    Pab = ( kwargs["a"].intersection(kwargs["b"]) ) / kwargs["s"]
+                    Pb = kwargs["b"] / kwargs["s"]
                     
                     return Pab/Pb
                     
@@ -699,6 +707,7 @@ class Maive():
                 
         except Exception as e:
             return e
+    
     
     def P_BayesianProbability(self):
         

@@ -666,25 +666,37 @@ class Maive():
     
     def P_conditionalProbability(self, **kwargs):
         """Function to return the conditional probability i.e. P(a|b). Please input keyworded arguments as\n
-        1. pab : Probability of A intersection B\n
-        2. b : Probability of event B
+        CASE A:  'pab' Probability of A intersection B and 'pb' Probability of event B\n
+        NOTE: If you don't have pab and pb, then enter \n
+        CASE B: 'a' List of set A and 'b' List of set B\n
         It will return the INT/FLOAT value which is result of P(a|b)
         """
         
         try:
             if(len(kwargs) == 2):
                 
-                if("pab" in kwargs & "b" in kwargs):
+                if("pab" in kwargs & "pb" in kwargs):
                     
-                    return kwargs["pab"]/kwargs["b"]
+                    return kwargs["pab"]/kwargs["pb"]
+                
+                elif("a" in kwargs & "b" in kwargs):
+                    
+                    na = len(kwargs["a"])
+                    nb = len(kwargs["b"])
+                    
+                    Pab = ( kwargs["a"].intersection(kwargs["b"]) ) / (na+nb)
+                    Pb = kwargs["b"] / (na+nb)
+                    
+                    return Pab/Pb
                     
                 else:
-                    raise Exception("Please input pab (Probability of A intersection B) and p (Probability of event B)")
-                    
+                    raise Exception("Please input as per CASE A or CASE B (Read function documentation).")
+                  
+            
             
             else:
-                raise Exception("Please input pab (Probability of A intersection B) and p (Probability of event B)")
-        
+                raise Exception("Please input as per CASE A or CASE B (Read function documentation).")
+                
         except Exception as e:
             return e
     

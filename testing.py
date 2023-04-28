@@ -8,7 +8,7 @@ from maive.maive import Maive
 
 m = Maive()
 
-test = m.P_conditionalProbability()
+test = m.P_conditionalProbability(pab = , b= )
 
 
 

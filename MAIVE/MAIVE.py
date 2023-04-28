@@ -677,7 +677,7 @@ class Maive():
                 
                 if("pab" in kwargs and "pb" in kwargs and "s" in kwargs):
                     
-                    return kwargs["pab"]/kwargs["pb"]
+                    return round(kwargs["pab"]/kwargs["pb"], 2)
                 
                 elif("a" in kwargs and "b" in kwargs and "s" in kwargs):
                     

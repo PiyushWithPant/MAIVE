@@ -711,13 +711,29 @@ class Maive():
     
     
     def P_BayesianProbability(self):
+        """
         
+        """
         try:
             pass
         
         except Exception as e:
             return e
     
+    
+    
+    
+    
+    # STATISTICS
+    
+    def mean():
+        """
+        Returns the mean value of the sample presented as a LIST
+        """
+        try:
+            pass
+        except Exception as e:
+            raise Exception("")
     
     
         

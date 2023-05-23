@@ -738,6 +738,22 @@ class Maive():
     
         
        
+    # DATA SCIENCE AND ARTIFICIAL INTELLIGENCE
+    
+        
+    def confusionMatrix():
+        """
+        Returns the confusion matrix for your ML model
+        """
+        try:
+            pass
+        except Exception as e:
+            raise Exception("")
+    
+    
+       
+       
+       
 # CREATE DISTRIBUTION AND BUILD = python setup.py sdist bdist_wheel
 # UPLOAD PACKAGE = twine upload dist/*
 # CHECK DISTRIBUTION = twine check dist/*

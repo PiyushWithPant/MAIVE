@@ -2,6 +2,18 @@ import math
 import random
 from fractions import Fraction
 
+import numpy as np
+import pandas as pd
+import statistics as st
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
+
+import statsmodels.api as sms
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.cluster import KMeans
+
+
 
 class Maive():
     
@@ -709,13 +721,33 @@ class Maive():
         except Exception as e:
             return e
     
+
     
-    def P_BayesianProbability(self):
+    def probabilityDistributionFunction(self, data):
         """
-        
+        Returns the graph of Probability Distibution Function\n
+    
         """
         try:
-            pass
+
+            # Parameters for the normal distribution
+            mu = self.mean(data)  # mean
+            sigma = self.standardDeviationS(data)  # standard deviation
+
+            # Generate an array of values for the x-axis
+            # x = np.linspace(-5, 5, 100)
+            x = np.array(data)
+
+            # Calculate the corresponding probability density values using the normal distribution function
+            pdf = (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-(x - mu)**2 / (2 * sigma**2))
+
+            # Plot the PDF
+            plt.plot(x, pdf)
+            plt.xlabel('x')
+            plt.ylabel('Probability Density')
+            plt.title('PDF')
+            return plt.show()
+    
         
         except Exception as e:
             return e
@@ -726,14 +758,112 @@ class Maive():
     
     # STATISTICS
     
-    def mean():
+    def mean(self, list):
         """
         Returns the mean value of the sample presented as a LIST
         """
         try:
-            pass
+            
+            # total = sum(list)
+            # length = len(list)
+            # mean = total / length
+            # return mean
+            
+            m = st.mean(list)
+            return m
+            
         except Exception as e:
-            raise Exception("")
+            return e
+    
+    
+    def mode(self, list):
+        """
+        Returns the mode value of the sample presented as a LIST
+        """
+        try:
+            m = st.mode(list)
+            return m
+        except Exception as e:
+            return e
+    
+    
+    def median(self, list):
+        """
+        Returns the median value of the sample presented as a LIST
+        """
+        try:
+            m = st.median(list)
+            return m
+        except Exception as e:
+            return e
+    
+    
+    def varianceS(self, list):
+        """
+        Returns the variance of the SAMPLE presented as a list
+        """
+        try:
+            v = st.variance(list)
+            return v
+        except Exception as e:
+            return e
+        
+    def varianceP(self, list):
+        """
+        Returns the variance of the POPULATION presented as a list
+        """
+        try:
+            v = st.pvariance(list)
+            return v
+        except Exception as e:
+            return e
+        
+        
+    
+    def standardDeviationS(self, list):
+        """
+        Returns the standard deviation of Sample passed as a list
+        """
+        try:
+            sd = st.stdev(list)
+            return sd
+        except Exception as e:
+            return e
+    
+    def standardDeviationP(self, list):
+        """
+        Returns the standard deviation of population passed as a list
+        """
+        try:
+            
+            sd = st.pstdev(list)
+            return sd
+        except Exception as e:
+            return e
+    
+    def covariance(self,x,y):
+        """
+        Returns the covariance between two features x and y passed as a list
+        """
+        try:
+            
+            cov = st.covariance(x,y)
+            return cov
+        
+        except Exception as e:
+            return e
+    
+    def correlation(self, x,y):
+        """
+        Returns the correlation between two features x and y passed as a list
+        """
+        try:
+            
+            cor = st.correlation(x,y)
+            return cor
+        
+        except Exception as e:
+            return e
     
     
         
@@ -741,16 +871,156 @@ class Maive():
     # DATA SCIENCE AND ARTIFICIAL INTELLIGENCE
     
         
-    def confusionMatrix():
+    def confusionMatrix(self):
         """
         Returns the confusion matrix for your ML model
         """
         try:
             pass
         except Exception as e:
-            raise Exception("")
+            return e
+        
+        
+    def adjustedR2(self):
+        """
+        Returns the adjusted R2 of the ML model
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
     
     
+    def bias(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+    
+    def weights(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+    
+    
+    
+    
+    def regressionReport(self):
+        """
+        Returns regression report as a dataframe
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+        
+        
+    def scatterPlot(self):
+        """
+        Returns scatter plot of the input x and y along with their labels, title, etc.
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+        
+    
+    
+    def distPlot(self):
+        """
+        Returns 
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+        
+    
+    
+       
+    def Cluster(self):
+        """
+        Returns 
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+        
+    def elbowMethod(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+       
+       
+       
+    def LinearRegression(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+       
+       
+       
+       
+    def LogisticRegression(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+       
+       
+      
+    def createNPZ(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+       
+       
+      
+    def createCSV(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+       
+    
+    def featureScaling(self):
+        """
+        Returns
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+       
+       
+      
+       
        
        
        

@@ -8,11 +8,13 @@ from maive.maive import Maive
 
 m = Maive()
 
-test = m.P_conditionalProbability(pab = 2/36, pb = 1/6, s = 36)
+
+x = [1,2,3,4,5]
 
 
+test = m.probabilityDistributionFunction(x)
 
-print(test)
+print(type(test))
 
 
 

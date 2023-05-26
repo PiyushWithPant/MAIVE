@@ -726,6 +726,7 @@ class Maive():
     def probabilityDistributionFunction(self, data):
         """
         Returns the graph of Probability Distibution Function\n
+        Input the data as an attribute (LIST)
     
         """
         try:

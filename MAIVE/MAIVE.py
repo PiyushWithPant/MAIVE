@@ -936,7 +936,7 @@ class Maive():
     
     def distPlot(self):
         """
-        Returns 
+        Returns the distribution of the feature passed
         """
         try:
             pass
@@ -948,7 +948,7 @@ class Maive():
        
     def Cluster(self):
         """
-        Returns 
+        Function to perform the clustering of the provided dataset using KMeans algorithm
         """
         try:
             pass
@@ -957,7 +957,7 @@ class Maive():
         
     def elbowMethod(self):
         """
-        Returns
+        Returns the visual representation of the elbow method showing WCSS for number of clusters.
         """
         try:
             pass

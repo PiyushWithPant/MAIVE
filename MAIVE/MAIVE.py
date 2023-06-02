@@ -991,7 +991,7 @@ class Maive():
       
     def createNPZ(self):
         """
-        Returns
+        Saves the given data file in NPZ format
         """
         try:
             pass
@@ -1002,7 +1002,7 @@ class Maive():
       
     def createCSV(self):
         """
-        Returns
+        Saves the given data file in CSV format
         """
         try:
             pass
@@ -1012,7 +1012,7 @@ class Maive():
     
     def featureScaling(self):
         """
-        Returns
+        Performs feature scaling on the given data and returns it
         """
         try:
             pass

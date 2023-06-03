@@ -1020,6 +1020,16 @@ class Maive():
             return e
        
        
+    def nn(self):
+        """
+        Neural Network
+        """
+        try:
+            pass
+        except Exception as e:
+            return e
+       
+       
       
        
        

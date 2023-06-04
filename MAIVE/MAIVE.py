@@ -1022,7 +1022,11 @@ class Maive():
        
     def nn(self):
         """
-        Neural Network
+        To create your basic Neural Network\n
+        1. Add number of layers you want as layers\n
+        2. Optimizer as opt\n
+        3. Loss Function as loss\n
+        4. Epochs as e
         """
         try:
             pass

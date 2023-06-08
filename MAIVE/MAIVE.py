@@ -966,12 +966,18 @@ class Maive():
        
        
        
-    def LinearRegression(self):
+    def LinearRegression(self, x, y):
         """
         Returns
         """
         try:
-            pass
+            
+            model = LinearRegression()
+            
+            model.fit(x, y)
+            
+            return model
+            
         except Exception as e:
             return e
        

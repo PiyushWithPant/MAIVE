@@ -9,12 +9,25 @@ from maive.maive import Maive
 m = Maive()
 
 
-x = [1,2,3,4,5]
+import pandas as pd
+
+data = pd.read_csv('testData1.csv')
+
+x = data[['size','year']]
+y = data['price']
 
 
-test = m.probabilityDistributionFunction(x)
+test = m.LinearRegression(x,y)
 
-print(type(test))
+# print(m.r2(test, x.values.reshape(-1,1), y))
+# print(m.regressionReport(x.values.reshape(-1,1), y))
+
+# t = m.scatterPlot(x,y, "Size", "Price", "Linear Regression")
+
+# t = m.summaryTable(x, y)
+
+# print(t)
+
 
 
 

@@ -10,8 +10,12 @@ import seaborn as sns
 sns.set()
 
 import statsmodels.api as sms
+
 from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.feature_selection import f_regression
+
 from sklearn.cluster import KMeans
+
 
 
 
@@ -872,74 +876,214 @@ class Maive():
     # DATA SCIENCE AND ARTIFICIAL INTELLIGENCE
     
         
-    def confusionMatrix(self):
+    def confusionMatrix(self, model, x, y):
         """
-        Returns the confusion matrix for your ML model
+        Returns the confusion matrix for your ML model. (For Logistic regression model)\n
+        Input as - confusionMatrix(model, x, y)\n
+        where model = logistic regression model. x = input, and y = target
         """
         try:
-            pass
+            
+            #Predict the values using the Logit model
+            pred_values = model.predict(x)
+            # Specify the bins 
+            bins=np.array([0,0.5,1])
+            # Create a histogram, where if values are between 0 and 0.5 tell will be considered 0
+            # if they are between 0.5 and 1, they will be considered 1
+            cm = np.histogram2d(y, pred_values, bins=bins)[0]
+            # Calculate the accuracy
+            # accuracy = (cm[0,0]+cm[1,1])/cm.sum()
+            
+            return cm
+            
+            
         except Exception as e:
             return e
         
         
-    def adjustedR2(self):
+    def logisticModelAccuracy(self, model, x, y):
         """
-        Returns the adjusted R2 of the ML model
-        """
-        try:
-            pass
-        except Exception as e:
-            return e
-    
-    
-    def bias(self):
-        """
-        Returns
+        Returns the accuracy of your ML model. (For Logistic regression model)\n
+        Input as - confusionMatrix(model, x, y)\n
+        where model = logistic regression model. x = input, and y = target
         """
         try:
-            pass
-        except Exception as e:
-            return e
-    
-    def weights(self):
-        """
-        Returns
-        """
-        try:
-            pass
-        except Exception as e:
-            return e
-    
-    
-    
-    
-    def regressionReport(self):
-        """
-        Returns regression report as a dataframe
-        """
-        try:
-            pass
+            
+            pred_values = model.predict(x)
+
+            bins=np.array([0,0.5,1])
+
+            cm = np.histogram2d(y, pred_values, bins=bins)[0]
+            # Calculate the accuracy
+            accuracy = (cm[0,0]+cm[1,1])/cm.sum()
+            
+            return accuracy
+            
+            
         except Exception as e:
             return e
         
         
-    def scatterPlot(self):
+        
+        
+    def r2(self, model, x, y):
         """
-        Returns scatter plot of the input x and y along with their labels, title, etc.
+        Returns the R2 of the ML model.\n
+        Input as - r2(model, x , y) \n
+        1. model - linear model\n
+        2. x - reshaped input array\n
+        3. y - target data array
         """
         try:
-            pass
+            
+            return model.score(x,y)
+        
+        except Exception as e:
+            return e
+    
+    
+    
+    def adjustedR2(self, model, x , y):
+        """
+        Returns the adjusted R2 of the ML model. Input as => adjustedR2(model, x, y)
+        """
+        try:
+            
+            m = x.shape[0]
+            n = x.shape[1]
+            
+            r2 = model.score(x,y)
+            
+            adj = 1 - (1-r2) * (m-1)/(m-n-1)
+            
+            return adj
+            
+        except Exception as e:
+            return e
+    
+    
+    
+    def p_value(self, x, y):
+        """
+        Returns the p-value of the model. \n
+        Input the X and Y (reshaped)\n
+        
+        """
+        try:
+            f_stats, p_value = f_regression(x,y)
+            return p_value
+        
+        except Exception as e:
+            return e 
+        
+        
+        
+    def f_stats(self, x, y):
+        """
+        Returns the f-stats of the model. \n
+        Input the X and Y (reshaped)\n
+        
+        """
+        try:
+            f_stats, p_value = f_regression(x,y)
+            return f_stats
+        
+        except Exception as e:
+            return e 
+        
+        
+        
+    def bias(self, model):
+        """
+        Returns the bias of the model. \n
+        Input the trained model as bias(model) [Linear model preferrably]
+        """
+        try:
+            return model.intercept_
+        except Exception as e:
+            return e
+    
+    
+    
+    def weights(self, model):
+        """
+        Returns the weight(s) of the features. \n
+        Input the trained model as weights(model) [Linear model preferrably]
+        """
+        try:
+            weights = model.coef_
+            
+            return weights
+        
+        except Exception as e:
+            return e
+    
+    
+    
+    
+    def regressionReport(self, x, y):
+        """
+        Returns regression report as a dataframe. \n
+        Input x and y  (reshaped)
+        """
+        try:
+            
+            X = sms.add_constant(x)
+            
+            linReg = sms.OLS(y,X).fit()
+            
+            return linReg.summary()
+            
+        except Exception as e:
+            return e
+        
+        
+        
+    def logisticReport(self, x ,y):
+        """
+        Returns logistic report as a dataframe. \n
+        Input x and y  (reshaped)
+        """
+        try:
+            
+            X = sms.add_constant(x)
+            
+            logReg = sms.logit(y,X).fit()
+            
+            return logReg.summary()
+            
+            
+        except Exception as e:
+            return e
+        
+        
+        
+    def scatterPlot(self, x, y, xlabel, ylabel, title):
+        """
+        Returns scatter plot of the input x and y along with their labels, title, etc. Input in sequence as-\n
+        scatterPlot( x, y, xlabel, ylabel, title)
+        """
+        try:
+            plt.scatter(x,y)
+            plt.xlabel(xlabel, fontsize=15)
+            plt.ylabel(ylabel, fontsize=15)
+            plt.title(title, fontsize=20)
+            return plt.show()
+            
+            
         except Exception as e:
             return e
         
     
     
-    def distPlot(self):
+    def distPlot(self,x):
         """
-        Returns the distribution of the feature passed
+        Returns the distribution of the feature passed.
         """
         try:
-            pass
+           
+            return sns.displot(x), plt.show()
+            
         except Exception as e:
             return e
         
@@ -968,13 +1112,18 @@ class Maive():
        
     def LinearRegression(self, x, y):
         """
-        Returns
+        Returns the trained Linear Regression model.\n
+        Input as - LinearRegression( x , y )\n
+        where x = input data, y = target data\n
+        Note: Please ensure data format is compatible.
         """
         try:
             
+            X = x.values.reshape(-1,1)
+            
             model = LinearRegression()
             
-            model.fit(x, y)
+            model.fit(X, y)
             
             return model
             
@@ -984,18 +1133,57 @@ class Maive():
        
        
        
-    def LogisticRegression(self):
+    def LogisticRegression(self, x,y):
         """
-        Returns
+        Returns the trained Logistics Regression model.\n
+        Input as - LogisticRegression( x , y )\n
+        where x = input data, y = target data\n
+        Note: Please ensure data format is compatible.
         """
         try:
-            pass
+            X = x.values.reshape(-1,1)
+            
+            model = LogisticRegression()
+            
+            model.fit(X, y)
+            
+            return model
+            
         except Exception as e:
             return e
        
        
       
-    def createNPZ(self):
+    def summaryTable(self,x, y):
+        """
+        Returns a dataframe that shows the summary of the Linear regression model.\n
+        Input as - summaryTable(x, y)\n
+        x = input data (with feature names), y = target data
+        """
+        try:
+            
+            reg = LinearRegression()
+
+            reg.fit(x, y)
+            
+            summary = pd.DataFrame(
+                data = x.columns.values,
+                columns =['Features']
+            )
+
+            summary['Weight'] = reg.coef_
+            pvalue = self.p_value(x,y)
+            summary['p-value'] = pvalue.round(2)
+
+            return summary
+            
+        except Exception as e:
+            return e
+       
+       
+       
+      
+    def createNPZ(self,):
         """
         Saves the given data file in NPZ format
         """
@@ -1005,6 +1193,7 @@ class Maive():
             return e
        
        
+    
       
     def createCSV(self):
         """

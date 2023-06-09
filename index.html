@@ -57,7 +57,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <p class="logoBanner">
-                <b>M</b>athematics for <b>A</b>rtificial <b>I</b>ntelligence
+                <b>M</b>athematics and <b>A</b>rtificial <b>I</b>ntelligence
                 with <b>V</b>isualization <b>E</b>xtended
               </p>
             </li>
@@ -76,8 +76,7 @@
           alt="Indian flag"
         />
         2023&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Last
-        Update: April 2023 (The package and documentation is under development:
-        Expected full release June 2023)
+        Update: June 2023 (The package and documentation is under development)
       </marquee>
     </div>
 
@@ -146,7 +145,7 @@
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  <h6>HOW TO USE?</h6>
+                  <h5>HOW TO USE?</h5>
                 </button>
               </h2>
               <div
@@ -221,12 +220,12 @@
                   aria-expanded="false"
                   aria-controls="collapseSix"
                 >
-                  <h6>AI/ML/DL/DS</h6>
+                  <h5>AI/ML/DL/DS</h5>
                 </button>
               </h2>
               <div
                 id="collapseSix"
-                class="accordion-collapse collapse"
+                class="accordion-collapse collapse show"
                 aria-labelledby="headingSix"
                 data-bs-parent="#accordionExample"
               >
@@ -234,73 +233,199 @@
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                       <code>confusionMatrix()</code>
-                      <p>Returns the confusion matrix for your ML model</p>
+                      <p>
+                        Returns the confusion matrix for your ML model. (For
+                        Logistic regression model)<br />
+                        Input as - confusionMatrix(model, x, y)<br />
+                        where model = logistic regression model. x = input, and
+                        y = target
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code>r2(model, x, y)</code>
+                      <p>
+                        Returns the R2 of the ML model. Input as - r2(model, x ,
+                        y) <br />
+                        1. model - linear model<br />
+                        2. x - reshaped input array<br />
+                        3. y - target data array
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>adjustedR2()</code>
-                      <p>Returns the adjusted R2 of the ML model</p>
+                      <p>
+                        Returns the adjusted R2 of the ML model. Input as =>
+                        adjustedR2(model, x, y)
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>bias()</code>
-                      <p>Returns the bias or intercept value of the model</p>
+                      <p>
+                        Returns the bias of the model. <br />
+                        Input the trained model as bias(model) [Linear model
+                        preferrably]
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>weights()</code>
-                      <p>Returns the weights of your features</p>
+                      <p>
+                        Returns the weight(s) of the features. <br />
+                        Input the trained model as weights(model) [Linear model
+                        preferrably]
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>regressionReport()</code>
                       <p>
                         Provides you with the report of your Regression which
-                        contains info like weights, bias, p-value, etc
+                        contains info like weights, bias, p-value, etc as a
+                        dataframe. <br />
+                        Input x and y (reshaped)
                       </p>
                     </li>
                     <li class="list-group-item">
                       <code>scatterPlot()</code>
                       <p>
                         Returns scatter plot of the input x and y along with
-                        their labels, title, etc.
+                        their labels, title, etc. Input in sequence as-<br />
+                        scatterPlot( x, y, xlabel, ylabel, title)
                       </p>
                     </li>
                     <li class="list-group-item">
                       <code>distPlot()</code>
-                      <p>Creates a distplot of your feature</p>
+                      <p>
+                        Returns the distribution of the feature passed. Please
+                        ensure the array is optimally reshaped.
+                      </p>
                     </li>
+                    <li class="list-group-item">
+                      <code>p_value(x, y)</code>
+                      <p>
+                        Returns the p-value of the model. <br />
+                        Input the X and Y (reshaped)<br />
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code>f_stats(x, y)</code>
+                      <p>
+                        Returns the f-stats of the model. <br />
+                        Input the X and Y (reshaped)<br />
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code>logisticReport( x ,y)</code>
+                      <p>
+                        Returns logistic report as a dataframe. Input x and y
+                        (reshaped)
+                      </p>
+                    </li>
+
+                    <li class="list-group-item">
+                      <code>summaryTable(x, y)</code>
+                      <p>
+                        Returns a dataframe that shows the summary of the Linear
+                        regression model.<br />
+                        Input as - summaryTable(x, y)<br />
+                        x = input data (with feature names), y = target data
+                      </p>
+                    </li>
+
                     <li class="list-group-item">
                       <code>Cluster()</code>
                       <p>
-                        Performs clustering of the data using KMeans algorithm
+                        Function to perform the clustering of the provided
+                        dataset using KMeans algorithm. Please input the
+                        following<br />
+                        x = data (reshaped), k = No. of clusters
                       </p>
                     </li>
                     <li class="list-group-item">
                       <code>elbowMethod()</code>
                       <p>
-                        Returns a graph representation of WCSS vs No. of
-                        cluster. From the graph, the user can choose the optimal
-                        value of k(no. of cluster).
+                        Returns the graph of the elbow method showing WCSS for
+                        number of clusters.<br />
+                        Input the training data only.<br />
+                        NOTE - The number of cluster value K is preset i.e. the
+                        function calculates WCSS for clusters from 1 to 10
+                        clusters
                       </p>
                     </li>
                     <li class="list-group-item">
                       <code>LinearRegression()</code>
-                      <p>Performs simple linear regression on the dataset.</p>
+                      <p>
+                        Returns the trained Linear Regression model.<br />
+                        Input as - LinearRegression( x , y )<br />
+                        where x = input data, y = target data<br />
+                        Note: Please ensure data format is compatible.
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>LogisticRegression()</code>
-                      <p>Performs logistic regression on the dataset.</p>
+                      <p>
+                        Returns the trained Logistics Regression model.<br />
+                        Input as - LogisticRegression( x , y )<br />
+                        where x = input data, y = target data<br />
+                        Note: Please ensure data format is compatible.
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>createNPZ()</code>
-                      <p>To create and save data in .npz file</p>
+                      <p>
+                        Saves the given data file in NPZ format.<br />
+                        Input in the given sequence = (filename, x, y)
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>createCSV()</code>
-                      <p>To create and save data in .csv file</p>
+                      <p>
+                        Saves the given data file in CSV format. <br />
+                        Input in the given sequence = (filename, data)
+                      </p>
                     </li>
                     <li class="list-group-item">
                       <code>featureScaling()</code>
-                      <p>To perform feature scaling or standardization of your dataset</p>
+                      <p>
+                        Performs feature scaling on the given training data
+                        x.<br />
+                        It returns-<br />
+                        1. Scaled train data as scaled_x<br />
+                        2. scaler (StandardScaler()) by which the data is scaled
+                      </p>
                     </li>
 
+                    <li class="list-group-item">
+                      <code>logisticModelAccuracy(model, x, y)</code>
+                      <p>
+                        Returns the accuracy of your ML model. (For Logistic
+                        regression model)<br />
+                        Input as - logisticModelAccuracy(model, x, y)<br />
+                        where model = logistic regression model. x = input, and
+                        y = target
+                      </p>
+                    </li>
+
+                    <li class="list-group-item">
+                      <code>nn(**kwargs)</code>
+                      <p>
+                        To create your basic Neural Network for classification
+                        (It is advised to try to train your own NN for better
+                        results)<br />
+                        Input keyworded arguments as:<br />
+                        1. <b>x</b> = training data aka input<br />
+                        2. <b>y</b> = target data<br />
+                        3. <b>t</b> = target size (output nodes in output
+                        layer)<br />
+                        4. <b>e</b> = Epochs<br />
+
+                        NOTE: The NN uses SOFTMAX activation function for its
+                        only layer. loss function = 'mean_squared_error'
+                        optimizer = 'sgd'
+                      </p>
+                    </li>
+                    <li class="list-group-item">
+                      <code></code>
+                      <p></p>
+                    </li>
                     <li class="list-group-item">
                       <code></code>
                       <p></p>
@@ -320,12 +445,12 @@
                   aria-expanded="false"
                   aria-controls="collapseFive"
                 >
-                  <h6>Probability</h6>
+                  <h5>Probability</h5>
                 </button>
               </h2>
               <div
                 id="collapseFive"
-                class="accordion-collapse collapse"
+                class="accordion-collapse collapse show"
                 aria-labelledby="headingFive"
                 data-bs-parent="#accordionExample"
               >
@@ -453,12 +578,12 @@
                   aria-expanded="false"
                   aria-controls="collapseFour"
                 >
-                  <h6>Statistics</h6>
+                  <h5>Statistics</h5>
                 </button>
               </h2>
               <div
                 id="collapseFour"
-                class="accordion-collapse collapse"
+                class="accordion-collapse collapse show"
                 aria-labelledby="headingFour"
                 data-bs-parent="#accordionExample"
               >
@@ -539,12 +664,12 @@
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  <h6>Arithmatic Progression</h6>
+                  <h5>Arithmatic Progression</h5>
                 </button>
               </h2>
               <div
                 id="collapseTwo"
-                class="accordion-collapse collapse"
+                class="accordion-collapse collapse show"
                 aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample"
               >
@@ -619,12 +744,12 @@
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  <h6>Quadratic Equations</h6>
+                  <h5>Quadratic Equations</h5>
                 </button>
               </h2>
               <div
                 id="collapseThree"
-                class="accordion-collapse collapse"
+                class="accordion-collapse collapse show"
                 aria-labelledby="headingThree"
                 data-bs-parent="#accordionExample"
               >

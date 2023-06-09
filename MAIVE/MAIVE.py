@@ -6,16 +6,16 @@ import numpy as np
 import pandas as pd
 import statistics as st
 import matplotlib.pyplot as plt
+import statsmodels.api as sms
 import seaborn as sns
 sns.set()
 
-import statsmodels.api as sms
-
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.feature_selection import f_regression
-
+from sklearn import preprocessing
 from sklearn.cluster import KMeans
 
+import tensorflow as tf
 
 
 
@@ -904,7 +904,7 @@ class Maive():
     def logisticModelAccuracy(self, model, x, y):
         """
         Returns the accuracy of your ML model. (For Logistic regression model)\n
-        Input as - confusionMatrix(model, x, y)\n
+        Input as - logisticModelAccuracy(model, x, y)\n
         where model = logistic regression model. x = input, and y = target
         """
         try:
@@ -1090,21 +1090,58 @@ class Maive():
     
     
        
-    def Cluster(self):
+    def Cluster(self, x, k):
         """
-        Function to perform the clustering of the provided dataset using KMeans algorithm
+        Function to perform the clustering of the provided dataset using KMeans algorithm.
+        Please input the following\n
+        x = data (reshaped), k = No. of clusters 
         """
         try:
-            pass
+            kmeans = KMeans(k)
+            KM = kmeans.fit(x)
+            
+            return KM
+            
+            
         except Exception as e:
             return e
         
-    def elbowMethod(self):
+        
+        
+    def elbowMethod(self, trainData):
         """
-        Returns the visual representation of the elbow method showing WCSS for number of clusters.
+        Returns the graph of the elbow method showing WCSS for number of clusters.\n
+        Input the training data only.\n
+        NOTE - The number of cluster value K is preset i.e. the function calculates WCSS for clusters from 1 to 10 clusters
         """
         try:
-            pass
+            
+            wcss =[]
+            
+            for cluster in range(1, 11):
+                
+                # model
+                model = KMeans(cluster)
+                model.fit(trainData)
+                
+                # finding the value of model
+                WCSS = model.inertia_
+                
+                # Adding to the list
+                wcss.append(WCSS)
+    
+            
+            noOfClusters = range(1,11)
+
+            plt.scatter(noOfClusters, wcss)
+
+            plt.xlabel("Number of clusters", fontsize=15)
+            plt.ylabel("Number of clusters", fontsize=15)
+            plt.title("The Elbow Method", fontsize=20)
+            plt.plot(noOfClusters, wcss)
+            return plt.show()
+            
+            
         except Exception as e:
             return e
        
@@ -1158,7 +1195,7 @@ class Maive():
         """
         Returns a dataframe that shows the summary of the Linear regression model.\n
         Input as - summaryTable(x, y)\n
-        x = input data (with feature names), y = target data
+        x = input data (with feature names), y = target data 
         """
         try:
             
@@ -1183,48 +1220,99 @@ class Maive():
        
        
       
-    def createNPZ(self,):
+    def createNPZ(self,filename, x,y):
         """
-        Saves the given data file in NPZ format
+        Saves the given data file in NPZ format.\n
+        Input in the given sequence = (filename, x, y)
+        
         """
         try:
-            pass
+            return np.savez(filename, inputs = x, targets = y)
         except Exception as e:
             return e
        
        
     
       
-    def createCSV(self):
+    def createCSV(self, filename, data):
         """
-        Saves the given data file in CSV format
+        Saves the given data file in CSV format.
+        \n
+        Input in the given sequence = (filename, data)
         """
         try:
-            pass
+            
+            df = pd.DataFrame(data)
+            
+            return df.to_csv(filename)
+            
         except Exception as e:
             return e
        
     
-    def featureScaling(self):
+    def featureScaling(self,x):
         """
-        Performs feature scaling on the given data and returns it
+        Performs feature scaling on the given training data x.\n
+        It returns-\n
+        1. Scaled train data as scaled_x\n
+        2. scaler (StandardScaler()) by which the data is scaled
+        
+        
         """
         try:
-            pass
+            scaler = preprocessing.StandardScaler().fit(x)
+            
+            scaled_x = scaler.transform(x)
+            
+            return scaled_x, scaler
+            
+            
         except Exception as e:
             return e
        
        
-    def nn(self):
+    def nn(self, **kwargs):
         """
-        To create your basic Neural Network\n
-        1. Add number of layers you want as layers\n
-        2. Optimizer as opt\n
-        3. Loss Function as loss\n
-        4. Epochs as e
+        To create your basic Neural Network for classification (It is advised to try to train your own NN for better results)\n
+        Input keyworded arguments as:\n
+        1. x = training data aka input\n
+        2. y = target data\n
+        3. t = target size (output nodes in output layer)\n
+        4. e = Epochs\n
+        
+        NOTE: The NN uses SOFTMAX activation function for its only layer. loss function = 'mean_squared_error'
+                    optimizer = 'sgd'
         """
         try:
-            pass
+            
+            if 'x' in kwargs and 'y' in kwargs and 't' in kwargs and 'e' in kwargs:
+            
+                x = kwargs['x']
+                y = kwargs['y']
+                targetSize = int(kwargs['t'])
+                epochs = int(kwargs['epochs'])
+                
+                
+                model = tf.keras.Sequential([
+        
+                    tf.keras.layers.Dense(targetSize, activation= 'softmax')  
+
+                ])
+                
+                model.compile(
+                    loss = 'mean_squared_error' ,   # Loss function
+                    optimizer= 'sgd'    # Optimizer
+                )
+                
+                model.fit(
+                    x, 
+                    y, 
+                    epochs= epochs,
+                )
+            
+            else:
+                raise Exception("Please enter only x, y, t, and e as keyworded arguments.")
+            
         except Exception as e:
             return e
        

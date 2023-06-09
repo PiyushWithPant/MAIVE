@@ -2,7 +2,7 @@
 
 # MAIVE
 
-###### Mathematics for Artificial Intelligence with Visualization Extended - 2023, Piyush Pant :heart:
+###### Mathematics and Artificial Intelligence with Visualization Extended - 2023, Piyush Pant :heart:
 
 <hr>
 

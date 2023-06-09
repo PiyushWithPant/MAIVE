@@ -1323,8 +1323,12 @@ class Maive():
        
        
 # CREATE DISTRIBUTION AND BUILD = python setup.py sdist bdist_wheel
+
 # UPLOAD PACKAGE = twine upload dist/*
+# Enter username and password of your PYPI account
+
 # CHECK DISTRIBUTION = twine check dist/*
+
 # TO UPDATE PACKAGE = twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 
 

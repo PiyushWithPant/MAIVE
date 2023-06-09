@@ -1,0 +1,9 @@
+numpy
+matplotlib
+pandas
+fractions
+statistics
+statsmodel
+seaborn
+sklearn
+tensorflow

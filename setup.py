@@ -1,7 +1,7 @@
 import setuptools
 
-VERSION = "0.0.2"
-DESCRIPTION = "Mathematics for Ariticial Intelligence and Visualization Extended"
+VERSION = "0.0.3"
+DESCRIPTION = "Mathematics and Ariticial Intelligence and Visualization Extended"
  
 
 with open("README.md", "r") as fh:
@@ -18,7 +18,7 @@ setuptools.setup(
     author_email= "piyushpant15@gmail.com",  
     
     keywords= [
-        "MAIVE", "piyush", "pant", "AI", "machine learning", "maths", "piyush pant", "mathematics for ai", "artificial intelligence"
+        "MAIVE","Artificial Intelligence", "Machine Learning", "Maths", 
     ],
      
     description=DESCRIPTION,
@@ -43,5 +43,5 @@ setuptools.setup(
     
     
     
-    install_requires=[],                     # Install other dependencies if any
+    install_requires=["numpy", "matplotlib", "pandas", "fractions","statistics","statsmodel", "seaborn","sklearn", "tensorflow"],                     # Install other dependencies if any
 )

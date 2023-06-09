@@ -4,6 +4,7 @@ setup.py
 MAIVE.egg-info/PKG-INFO
 MAIVE.egg-info/SOURCES.txt
 MAIVE.egg-info/dependency_links.txt
+MAIVE.egg-info/requires.txt
 MAIVE.egg-info/top_level.txt
 maive/__init__.py
 maive/maive.py

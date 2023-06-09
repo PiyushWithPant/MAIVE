@@ -2,6 +2,22 @@ import math
 import random
 from fractions import Fraction
 
+import numpy as np
+import pandas as pd
+import statistics as st
+import matplotlib.pyplot as plt
+import statsmodels.api as sms
+import seaborn as sns
+sns.set()
+
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.feature_selection import f_regression
+from sklearn import preprocessing
+from sklearn.cluster import KMeans
+
+import tensorflow as tf
+
+
 
 class Maive():
     
@@ -16,8 +32,10 @@ class Maive():
         self.roots = {}
         
         # Probability
-        self.event = 0
-        self.probability = 0
+        self.event = None
+        self.probability = None
+        self.isIndependent = None
+        self.frequency = None
         
         
         
@@ -467,19 +485,842 @@ class Maive():
         except Exception as e:
             return e
     
+    
+    
     def P_isIndependentEvent(self, **kwargs):
+        """Function to check if two events are independent or not\n
+           Please input the following:\n
+           1. set of event A and event B in LIST datatype as "a" and "b", otherwise Probability of A intersection B as "pab"\n
+           2. Probabily of event A as 'pa' and event B as 'pb'\n
+           This function returns TRUE if events are independent, otherwise FALSE
+        """
         try:
-            pass
+            if(len(kwargs) != 0):
+                
+                if( ("a" in kwargs and "b" in kwargs) and ("pa" in kwargs) and ("pb" in kwargs)):           
+                    
+                    # if pab is not provided
+                    a = kwargs["a"]
+                    b = kwargs["b"]
+                    pa = kwargs["pa"]
+                    pb = kwargs["pb"]
+                    
+                
+                    a_intersection_b = set(a).intersection(set(b))
+                    
+                    P_a_intersection_b = len(a_intersection_b)/len(a)
+                    
+                    product  = pa * pb
+                    
+                    if( product == P_a_intersection_b):
+                        self.isIndependent = True
+                        return self.isIndependent
+                    
+                    else:
+                        self.isIndependent = False
+                        return self.isIndependent
+                    
+
+                                        
+                elif("pab" in kwargs and "pa" in kwargs and "pb" in kwargs):
+                    
+                    pa = kwargs["pa"]
+                    pb = kwargs["pb"]
+                    pab = kwargs["pab"]
+                    
+                    product = pa * pb
+                    
+                    if(pab ==  product):
+                        self.isIndependent = True
+                        return self.isIndependent
+                    else:
+                        self.isIndependent = False
+                        return self.isIndependent
+                
+                else:
+                    raise Exception("Please provide a and b as set of events in LIST form OR just pab as probability of A intersection B, along with pa and pb as probability of a and b!")
+                
+            else:
+                raise Exception("Please provide events a and b to check their independent nature!")
         except Exception as e:
             return e
         
     
+    
+    
+    def P_frequency(self, listOfEvents, event):
         
+        """
+        Function to return the frequency (in numbers) of an event in a given list of events.\n
+        Input the data in order like this ( list_of_events , event_of_which_you_need_frequency)
         
-
+        """
+        
+        try:
+            
+            if(type(listOfEvents) == list):
+                
+                if(len(listOfEvents) == 0):
+                    raise Exception("The list is empty")
+                
+                
+                self.frequency = 0
+                
+                for object in listOfEvents:
+                    
+                    if( object == event):
+                        
+                        self.frequency += 1
+                        
+                
+                        
+                return self.frequency
+                    
+                    
+                    
+                    
+            
+            else:
+                raise Exception("Please input a list of events/objects, other formats are not accepted.")
+            
+            
+        except Exception as e:
+            return e
         
     
+    
+    
         
+
+    def P_frequencyDistribution(self, data):
+        """
+        Function to generate a frequency distribution table. Returns a dictionary with keys as list data items and values as their respective frequency
+        """
+        try:
+            if(type(data) == list):
+                
+                table =  {}  # this table will hold values and their frequency
+        
+                if(len(data) > 0):
+                    
+                    for i in data:
+                        
+                        table[i] = 0    # initializing the count of frequency
+                        
+                        for j in data:
+                            
+                            if i == j:
+                                
+                                table[i] += 1   # adding 1, even if it finds itself since we started it with 0
+                    
+                    return table
+                
+                else:
+                    raise Exception("The list is empty, please provide elements in the list as well.")
+            else:
+                raise Exception("Please input a list of events/objects, other formats are not accepted")
+            
+        except Exception as e:
+            return e
+        
+    
+    
+    
+    
+    
+    def P_relativeFrequency(self, data):
+        """
+        Function to generate relative frequency 
+        """
+        try:
+            if(type(data) == list):
+        
+                if(len(data) > 0):
+
+                    
+                    frequencyTable = self.P_frequencyDistribution(data)
+                    
+                    table = {}
+                    
+                    for key, value in frequencyTable.items():
+                        table[key] = value / len(data)
+                        
+                        
+                    return table
+                    
+                    
+                
+                else:
+                    raise Exception("The list is empty, please provide elements in the list as well.")
+            else:
+                raise Exception("Please input a list of events/objects, other formats are not accepted")
+            
+            
+        except Exception as e:
+            return e
+    
+    
+    def P_compliment(self, a):
+        """Function to return the compliment of an event. Please input the probability of the event as argument."""
+        try:
+            
+            if(type(a) == int or type(a) == float):
+                
+                if(a > 1 or a < 0):
+                    raise Exception("Please provide correct value of the probability of event 'a'.")
+                
+                return 1-a
+
+            else:
+                raise Exception("Please provide INT or FLOAT datatype only")
+            
+            
+        except Exception as e:
+            return e
+    
+    
+    
+    def P_conditionalProbability(self, **kwargs):
+        """Function to return the conditional probability i.e. P(a|b). Please input keyworded arguments as\n
+        CASE A:  'pab' Probability of A intersection B and 'pb' Probability of event B with 's' as sample space\n
+        NOTE: If you don't have pab and pb, then enter \n
+        CASE B: 'a' List of set A and 'b' List of set B with 's' as sample space\n
+        It will return the INT/FLOAT value which is result of P(a|b)
+        """
+        
+        try:
+            if(len(kwargs) == 3):
+                
+                if("pab" in kwargs and "pb" in kwargs and "s" in kwargs):
+                    
+                    return round(kwargs["pab"]/kwargs["pb"], 2)
+                
+                elif("a" in kwargs and "b" in kwargs and "s" in kwargs):
+                    
+                    if( type(kwargs["a"]) != list or type(kwargs["b"]) != list):
+                        raise Exception("Please enter a and b as LIST")
+                    
+                    if( len(kwargs["a"]) == 0 or len(kwargs["b"]) == 0):
+                        raise Exception("The list is empty")
+                    
+                    if( kwargs["s"] < ( len(kwargs["a"]) + len(kwargs["b"]) )):
+                        raise Exception("Sample value is not appropriate.")
+                        
+                   
+                    ab = len(set(kwargs["a"]).intersection(set(kwargs["b"])))
+                    
+                    Pab = ab / kwargs["s"]
+                    Pb = len(kwargs["b"]) / kwargs["s"]
+                    
+                    return round(Pab/Pb,2)
+                    
+                else:
+                    raise Exception("Please input as per CASE A or CASE B (Read function documentation).")
+                  
+            
+            
+            else:
+                raise Exception("Please input as per CASE A or CASE B (Read function documentation).")
+                
+        except Exception as e:
+            return e
+    
+
+    
+    def probabilityDistributionFunction(self, data):
+        """
+        Returns the graph of Probability Distibution Function\n
+        Input the data as an attribute (LIST)
+    
+        """
+        try:
+
+            # Parameters for the normal distribution
+            mu = self.mean(data)  # mean
+            sigma = self.standardDeviationS(data)  # standard deviation
+
+            # Generate an array of values for the x-axis
+            # x = np.linspace(-5, 5, 100)
+            x = np.array(data)
+
+            # Calculate the corresponding probability density values using the normal distribution function
+            pdf = (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-(x - mu)**2 / (2 * sigma**2))
+
+            # Plot the PDF
+            plt.plot(x, pdf)
+            plt.xlabel('x')
+            plt.ylabel('Probability Density')
+            plt.title('PDF')
+            return plt.show()
+    
+        
+        except Exception as e:
+            return e
+    
+    
+    
+    
+    
+    # STATISTICS
+    
+    def mean(self, list):
+        """
+        Returns the mean value of the sample presented as a LIST
+        """
+        try:
+            
+            # total = sum(list)
+            # length = len(list)
+            # mean = total / length
+            # return mean
+            
+            m = st.mean(list)
+            return m
+            
+        except Exception as e:
+            return e
+    
+    
+    def mode(self, list):
+        """
+        Returns the mode value of the sample presented as a LIST
+        """
+        try:
+            m = st.mode(list)
+            return m
+        except Exception as e:
+            return e
+    
+    
+    def median(self, list):
+        """
+        Returns the median value of the sample presented as a LIST
+        """
+        try:
+            m = st.median(list)
+            return m
+        except Exception as e:
+            return e
+    
+    
+    def varianceS(self, list):
+        """
+        Returns the variance of the SAMPLE presented as a list
+        """
+        try:
+            v = st.variance(list)
+            return v
+        except Exception as e:
+            return e
+        
+    def varianceP(self, list):
+        """
+        Returns the variance of the POPULATION presented as a list
+        """
+        try:
+            v = st.pvariance(list)
+            return v
+        except Exception as e:
+            return e
+        
+        
+    
+    def standardDeviationS(self, list):
+        """
+        Returns the standard deviation of Sample passed as a list
+        """
+        try:
+            sd = st.stdev(list)
+            return sd
+        except Exception as e:
+            return e
+    
+    def standardDeviationP(self, list):
+        """
+        Returns the standard deviation of population passed as a list
+        """
+        try:
+            
+            sd = st.pstdev(list)
+            return sd
+        except Exception as e:
+            return e
+    
+    def covariance(self,x,y):
+        """
+        Returns the covariance between two features x and y passed as a list
+        """
+        try:
+            
+            cov = st.covariance(x,y)
+            return cov
+        
+        except Exception as e:
+            return e
+    
+    def correlation(self, x,y):
+        """
+        Returns the correlation between two features x and y passed as a list
+        """
+        try:
+            
+            cor = st.correlation(x,y)
+            return cor
+        
+        except Exception as e:
+            return e
+    
+    
+        
+       
+    # DATA SCIENCE AND ARTIFICIAL INTELLIGENCE
+    
+        
+    def confusionMatrix(self, model, x, y):
+        """
+        Returns the confusion matrix for your ML model. (For Logistic regression model)\n
+        Input as - confusionMatrix(model, x, y)\n
+        where model = logistic regression model. x = input, and y = target
+        """
+        try:
+            
+            #Predict the values using the Logit model
+            pred_values = model.predict(x)
+            # Specify the bins 
+            bins=np.array([0,0.5,1])
+            # Create a histogram, where if values are between 0 and 0.5 tell will be considered 0
+            # if they are between 0.5 and 1, they will be considered 1
+            cm = np.histogram2d(y, pred_values, bins=bins)[0]
+            # Calculate the accuracy
+            # accuracy = (cm[0,0]+cm[1,1])/cm.sum()
+            
+            return cm
+            
+            
+        except Exception as e:
+            return e
+        
+        
+    def logisticModelAccuracy(self, model, x, y):
+        """
+        Returns the accuracy of your ML model. (For Logistic regression model)\n
+        Input as - logisticModelAccuracy(model, x, y)\n
+        where model = logistic regression model. x = input, and y = target
+        """
+        try:
+            
+            pred_values = model.predict(x)
+
+            bins=np.array([0,0.5,1])
+
+            cm = np.histogram2d(y, pred_values, bins=bins)[0]
+            # Calculate the accuracy
+            accuracy = (cm[0,0]+cm[1,1])/cm.sum()
+            
+            return accuracy
+            
+            
+        except Exception as e:
+            return e
+        
+        
+        
+        
+    def r2(self, model, x, y):
+        """
+        Returns the R2 of the ML model.\n
+        Input as - r2(model, x , y) \n
+        1. model - linear model\n
+        2. x - reshaped input array\n
+        3. y - target data array
+        """
+        try:
+            
+            return model.score(x,y)
+        
+        except Exception as e:
+            return e
+    
+    
+    
+    def adjustedR2(self, model, x , y):
+        """
+        Returns the adjusted R2 of the ML model. Input as => adjustedR2(model, x, y)
+        """
+        try:
+            
+            m = x.shape[0]
+            n = x.shape[1]
+            
+            r2 = model.score(x,y)
+            
+            adj = 1 - (1-r2) * (m-1)/(m-n-1)
+            
+            return adj
+            
+        except Exception as e:
+            return e
+    
+    
+    
+    def p_value(self, x, y):
+        """
+        Returns the p-value of the model. \n
+        Input the X and Y (reshaped)\n
+        
+        """
+        try:
+            f_stats, p_value = f_regression(x,y)
+            return p_value
+        
+        except Exception as e:
+            return e 
+        
+        
+        
+    def f_stats(self, x, y):
+        """
+        Returns the f-stats of the model. \n
+        Input the X and Y (reshaped)\n
+        
+        """
+        try:
+            f_stats, p_value = f_regression(x,y)
+            return f_stats
+        
+        except Exception as e:
+            return e 
+        
+        
+        
+    def bias(self, model):
+        """
+        Returns the bias of the model. \n
+        Input the trained model as bias(model) [Linear model preferrably]
+        """
+        try:
+            return model.intercept_
+        except Exception as e:
+            return e
+    
+    
+    
+    def weights(self, model):
+        """
+        Returns the weight(s) of the features. \n
+        Input the trained model as weights(model) [Linear model preferrably]
+        """
+        try:
+            weights = model.coef_
+            
+            return weights
+        
+        except Exception as e:
+            return e
+    
+    
+    
+    
+    def regressionReport(self, x, y):
+        """
+        Returns regression report as a dataframe. \n
+        Input x and y  (reshaped)
+        """
+        try:
+            
+            X = sms.add_constant(x)
+            
+            linReg = sms.OLS(y,X).fit()
+            
+            return linReg.summary()
+            
+        except Exception as e:
+            return e
+        
+        
+        
+    def logisticReport(self, x ,y):
+        """
+        Returns logistic report as a dataframe. \n
+        Input x and y  (reshaped)
+        """
+        try:
+            
+            X = sms.add_constant(x)
+            
+            logReg = sms.logit(y,X).fit()
+            
+            return logReg.summary()
+            
+            
+        except Exception as e:
+            return e
+        
+        
+        
+    def scatterPlot(self, x, y, xlabel, ylabel, title):
+        """
+        Returns scatter plot of the input x and y along with their labels, title, etc. Input in sequence as-\n
+        scatterPlot( x, y, xlabel, ylabel, title)
+        """
+        try:
+            plt.scatter(x,y)
+            plt.xlabel(xlabel, fontsize=15)
+            plt.ylabel(ylabel, fontsize=15)
+            plt.title(title, fontsize=20)
+            return plt.show()
+            
+            
+        except Exception as e:
+            return e
+        
+    
+    
+    def distPlot(self,x):
+        """
+        Returns the distribution of the feature passed.
+        """
+        try:
+           
+            return sns.displot(x), plt.show()
+            
+        except Exception as e:
+            return e
+        
+    
+    
+       
+    def Cluster(self, x, k):
+        """
+        Function to perform the clustering of the provided dataset using KMeans algorithm.
+        Please input the following\n
+        x = data (reshaped), k = No. of clusters 
+        """
+        try:
+            kmeans = KMeans(k)
+            KM = kmeans.fit(x)
+            
+            return KM
+            
+            
+        except Exception as e:
+            return e
+        
+        
+        
+    def elbowMethod(self, trainData):
+        """
+        Returns the graph of the elbow method showing WCSS for number of clusters.\n
+        Input the training data only.\n
+        NOTE - The number of cluster value K is preset i.e. the function calculates WCSS for clusters from 1 to 10 clusters
+        """
+        try:
+            
+            wcss =[]
+            
+            for cluster in range(1, 11):
+                
+                # model
+                model = KMeans(cluster)
+                model.fit(trainData)
+                
+                # finding the value of model
+                WCSS = model.inertia_
+                
+                # Adding to the list
+                wcss.append(WCSS)
+    
+            
+            noOfClusters = range(1,11)
+
+            plt.scatter(noOfClusters, wcss)
+
+            plt.xlabel("Number of clusters", fontsize=15)
+            plt.ylabel("Number of clusters", fontsize=15)
+            plt.title("The Elbow Method", fontsize=20)
+            plt.plot(noOfClusters, wcss)
+            return plt.show()
+            
+            
+        except Exception as e:
+            return e
+       
+       
+       
+    def LinearRegression(self, x, y):
+        """
+        Returns the trained Linear Regression model.\n
+        Input as - LinearRegression( x , y )\n
+        where x = input data, y = target data\n
+        Note: Please ensure data format is compatible.
+        """
+        try:
+            
+            X = x.values.reshape(-1,1)
+            
+            model = LinearRegression()
+            
+            model.fit(X, y)
+            
+            return model
+            
+        except Exception as e:
+            return e
+       
+       
+       
+       
+    def LogisticRegression(self, x,y):
+        """
+        Returns the trained Logistics Regression model.\n
+        Input as - LogisticRegression( x , y )\n
+        where x = input data, y = target data\n
+        Note: Please ensure data format is compatible.
+        """
+        try:
+            X = x.values.reshape(-1,1)
+            
+            model = LogisticRegression()
+            
+            model.fit(X, y)
+            
+            return model
+            
+        except Exception as e:
+            return e
+       
+       
+      
+    def summaryTable(self,x, y):
+        """
+        Returns a dataframe that shows the summary of the Linear regression model.\n
+        Input as - summaryTable(x, y)\n
+        x = input data (with feature names), y = target data 
+        """
+        try:
+            
+            reg = LinearRegression()
+
+            reg.fit(x, y)
+            
+            summary = pd.DataFrame(
+                data = x.columns.values,
+                columns =['Features']
+            )
+
+            summary['Weight'] = reg.coef_
+            pvalue = self.p_value(x,y)
+            summary['p-value'] = pvalue.round(2)
+
+            return summary
+            
+        except Exception as e:
+            return e
+       
+       
+       
+      
+    def createNPZ(self,filename, x,y):
+        """
+        Saves the given data file in NPZ format.\n
+        Input in the given sequence = (filename, x, y)
+        
+        """
+        try:
+            return np.savez(filename, inputs = x, targets = y)
+        except Exception as e:
+            return e
+       
+       
+    
+      
+    def createCSV(self, filename, data):
+        """
+        Saves the given data file in CSV format.
+        \n
+        Input in the given sequence = (filename, data)
+        """
+        try:
+            
+            df = pd.DataFrame(data)
+            
+            return df.to_csv(filename)
+            
+        except Exception as e:
+            return e
+       
+    
+    def featureScaling(self,x):
+        """
+        Performs feature scaling on the given training data x.\n
+        It returns-\n
+        1. Scaled train data as scaled_x\n
+        2. scaler (StandardScaler()) by which the data is scaled
+        
+        
+        """
+        try:
+            scaler = preprocessing.StandardScaler().fit(x)
+            
+            scaled_x = scaler.transform(x)
+            
+            return scaled_x, scaler
+            
+            
+        except Exception as e:
+            return e
+       
+       
+    def nn(self, **kwargs):
+        """
+        To create your basic Neural Network for classification (It is advised to try to train your own NN for better results)\n
+        Input keyworded arguments as:\n
+        1. x = training data aka input\n
+        2. y = target data\n
+        3. t = target size (output nodes in output layer)\n
+        4. e = Epochs\n
+        
+        NOTE: The NN uses SOFTMAX activation function for its only layer. loss function = 'mean_squared_error'
+                    optimizer = 'sgd'
+        """
+        try:
+            
+            if 'x' in kwargs and 'y' in kwargs and 't' in kwargs and 'e' in kwargs:
+            
+                x = kwargs['x']
+                y = kwargs['y']
+                targetSize = int(kwargs['t'])
+                epochs = int(kwargs['epochs'])
+                
+                
+                model = tf.keras.Sequential([
+        
+                    tf.keras.layers.Dense(targetSize, activation= 'softmax')  
+
+                ])
+                
+                model.compile(
+                    loss = 'mean_squared_error' ,   # Loss function
+                    optimizer= 'sgd'    # Optimizer
+                )
+                
+                model.fit(
+                    x, 
+                    y, 
+                    epochs= epochs,
+                )
+            
+            else:
+                raise Exception("Please enter only x, y, t, and e as keyworded arguments.")
+            
+        except Exception as e:
+            return e
+       
+       
+      
+       
+       
+       
        
 # CREATE DISTRIBUTION AND BUILD = python setup.py sdist bdist_wheel
 # UPLOAD PACKAGE = twine upload dist/*

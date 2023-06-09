@@ -1331,6 +1331,10 @@ class Maive():
 
 # TO UPDATE PACKAGE = twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 
+# IF ANY ERROR
+# specify the .WHL version you wanna upload only (latest)
+# twine upload --repository-url https://upload.pypi.org/legacy/ dist/MAIVE-0.0.4-py3-none-any.whl
+
 
 
 

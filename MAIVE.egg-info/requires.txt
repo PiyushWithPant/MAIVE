@@ -1,9 +1,7 @@
 numpy
 matplotlib
 pandas
-fractions
-statistics
-statsmodel
+statsmodels
 seaborn
-sklearn
+scikit-learn
 tensorflow

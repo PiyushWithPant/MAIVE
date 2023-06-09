@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "0.0.3"
+VERSION = "0.0.3.2"
 DESCRIPTION = "Mathematics and Ariticial Intelligence and Visualization Extended"
  
 
@@ -43,5 +43,5 @@ setuptools.setup(
     
     
     
-    install_requires=["numpy", "matplotlib", "pandas", "fractions","statistics","statsmodel", "seaborn","sklearn", "tensorflow"],                     # Install other dependencies if any
+    install_requires=["numpy", "matplotlib", "pandas","statsmodels", "seaborn","scikit-learn", "tensorflow"],                     # Install other dependencies if any
 )

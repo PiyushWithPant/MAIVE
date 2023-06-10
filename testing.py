@@ -48,11 +48,11 @@ import numpy as np
 # print(t)
 
 
-# data = pd.read_csv('testData2.csv')
-# t = m.elbowMethod(data)
+data = pd.read_csv('testData2.csv')
+t = m.elbowMethod(data)
 
 
-data = np.load("testData3.npz")
+# data = np.load("testData3.npz")
 
 
 
